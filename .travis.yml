@@ -1,0 +1,20 @@
+language: php
+php:
+#  - 7.0 cause error on i18n generator
+  - 5.6
+  - 5.5
+  - 5.4
+  - hhvm
+
+# custome build
+# see http://docs.travis-ci.com/user/customizing-the-build/
+install:
+  - composer install
+  - make generate-files
+
+# see http://docs.travis-ci.com/user/build-configuration/
+script: make test
+
+matrix:
+  allow_failures:
+    - php: hhvm

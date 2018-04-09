@@ -1,0 +1,16 @@
+{
+  "name" : "ethnam/project",
+  "description" : "a sample project of Ethnam",
+  "license": "BSD-4-Clause",
+  "authors": [
+    { "name": "DQNEO", "role" : "Administrator"}
+  ],
+  "require" : {
+    "ethnam/generator": "dev-master",
+    "ethnam/ethnam": "dev-master",
+    "smarty/smarty" : "2.*"
+  },
+  "scripts" : {
+    "post-install-cmd" : ["vendor/ethnam/generator/bin/ethnam-generator add-project -b . My"]
+  }
+}

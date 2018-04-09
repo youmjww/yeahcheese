@@ -1,0 +1,17 @@
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/DQNEO/ethnam-generator"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/DQNEO/ethnam"
+    }
+  ],
+  "require" : {
+    "ethnam/generator": "dev-master",
+    "dqneo/ethnam": "dev-master",
+    "smarty/smarty" : "2.*"
+  }
+}

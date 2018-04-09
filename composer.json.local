@@ -1,0 +1,20 @@
+{
+  "name" : "ethnam/project",
+  "description" : "a project for CI test",
+  "license": "MIT",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "/Users/DQNEO/src/github.com/DQNEO/ethnam-generator"
+    },
+    {
+      "type": "vcs",
+      "url": "/Users/DQNEO/src/github.com/DQNEO/ethnam"
+    }
+  ],
+  "require" : {
+    "ethnam/generator": "dev-master",
+    "dqneo/ethnam": "dev-master",
+    "smarty/smarty" : "2.*"
+  }
+}

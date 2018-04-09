@@ -1,0 +1,4 @@
+[project]
+ethna_version = "v3.1.0"
+controller_file = "app/My_Controller.php"
+controller_class = "My_Controller"
