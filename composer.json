@@ -10,6 +10,9 @@
     "ethnam/ethnam": "dev-master",
     "smarty/smarty" : "2.*"
   },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "3.*"
+  },
   "scripts" : {
     "post-install-cmd" : ["vendor/ethnam/generator/bin/ethnam-generator add-project -b . My"]
   }
