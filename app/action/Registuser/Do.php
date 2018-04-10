@@ -82,7 +82,7 @@ class My_Action_RegistuserDo extends My_ActionClass
     {
         $password = hash('sha256', $this->af->get('password1'));
         $this->insertUserData($this->af->get('mailaddress'), $password);
-        return 'registuser';
+        return 'home';
     }
 
     /**
