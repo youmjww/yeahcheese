@@ -97,6 +97,8 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     private function isRegisteredMailaddress($mailaddress)
     {
+
+        $mailaddress = pg_escape_string($mailaddress);
         $countMailaddress = $this->backend->getDB()->query("SELECT id FROM users WHERE mailaddress = '$mailaddress';")->getRows();
         if (count($countMailaddress)) {
             return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
@@ -115,6 +117,8 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     private function insertUserData($mailaddress, $password)
     {
+        $mailaddress = pg_escape_string($mailaddress);
+        $password = pg_escape_string($password);
         $this->backend->getDB()->query(
             "INSERT INTO
               users (id, mailaddress, password)
