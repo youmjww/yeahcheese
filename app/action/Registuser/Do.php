@@ -99,7 +99,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      *
      * @return mixed null or Ethna::Error
      */
-    private function isRegisteredMailaddress($mailaddress)
+    private function isRegisteredMailaddress(string $mailaddress)
     {
         $mailaddress = pg_escape_string($mailaddress);
         $countMailaddress = $this->backend->getDB()->query("SELECT id FROM users WHERE mailaddress = '$mailaddress';")->getRows();
@@ -118,7 +118,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      *
      * @return void
      */
-    private function insertUserData($mailaddress, $password)
+    private function insertUserData(string $mailaddress, string $password)
     {
         $mailaddress = pg_escape_string($mailaddress);
         $password = pg_escape_string($password);
