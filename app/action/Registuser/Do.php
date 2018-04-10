@@ -62,7 +62,6 @@ class My_Action_RegistuserDo extends My_ActionClass
 
         $password1 = $this->af->get('password1');
         $password2 = $this->af->get('password2');
-
         $checkPassword = (new My_RegistManager)->checkPassword($password1, $password2);
         if (Ethna::isError($checkPassword)) {
             $this->ae->addObject(null, $checkPassword);
@@ -102,7 +101,6 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     private function isRegisteredMailaddress($mailaddress)
     {
-
         $mailaddress = pg_escape_string($mailaddress);
         $countMailaddress = $this->backend->getDB()->query("SELECT id FROM users WHERE mailaddress = '$mailaddress';")->getRows();
         if (count($countMailaddress)) {
