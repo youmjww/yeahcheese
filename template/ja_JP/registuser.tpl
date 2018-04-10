@@ -1,5 +1,12 @@
 <form action="." method="post">
-  <table border="0">
+  {if count($errors)}
+    <ul>
+      {foreach from=$errors item=error}
+        <li>{$error}</li>
+      {/foreach}
+    </ul>
+  {/if}
+ <table border="0">
     <tr>
       <td>メールアドレス</td>
       <td><input type="text" name="mailaddress" value=""></td>
