@@ -96,8 +96,8 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     private function isRegisteredMailaddress($mailaddress)
     {
-        $rs = $this->backend->getDB()->query("SELECT id FROM users where mailaddress = '$mailaddress';")->getRows();
-        if (count($rs)) {
+        $countMailaddress = $this->backend->getDB()->query("SELECT id FROM users where mailaddress = '$mailaddress';")->getRows();
+        if (count($countMailaddress)) {
             return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
         }
     }
