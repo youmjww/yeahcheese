@@ -54,6 +54,15 @@ class My_Action_RegistuserDo extends My_ActionClass
             return 'registuser';
         }
 
+        $password1 = $this->af->get('password1');
+        $password2 = $this->af->get('password2');
+
+        $result = (new My_RegistManager)->checkPassword($password1, $password2);
+        if (Ethna::isError($result)) {
+            $this->ae->addObject(null, $result);
+            return 'registuser';
+        }
+
         return null;
     }
 

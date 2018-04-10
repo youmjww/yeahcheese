@@ -20,6 +20,7 @@ require_once 'My_ActionClass.php';
 require_once 'My_ActionForm.php';
 require_once 'My_ViewClass.php';
 require_once 'My_UrlHandler.php';
+require_once 'My_RegistManager.php';
 
 /**
  *  My application Controller definition.
