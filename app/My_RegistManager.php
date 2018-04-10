@@ -8,6 +8,8 @@ class My_RegistManager
      *  @access public
      *  @param $password1 string
      *  @param $password2 string
+     *
+     *  @return null or Ethna::Error
      */
     public function checkPassword($password1, $password2)
     {

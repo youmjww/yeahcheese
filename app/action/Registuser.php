@@ -12,6 +12,7 @@ class My_Action_Registuser extends My_ActionClass
      *  preprocess regist user action.
      *
      *  @access    public
+     *
      *  @return    string  Forward name (null if no errors.)
      */
     public function prepare()
@@ -23,6 +24,7 @@ class My_Action_Registuser extends My_ActionClass
      *  Index action implementation.
      *
      *  @access    public
+     *
      *  @return    string  Forward Name.
      */
     public function perform()
