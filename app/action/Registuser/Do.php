@@ -80,7 +80,9 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     public function perform()
     {
-         return 'registuser';
+        $password = hash('sha256', $this->af->get('password1'));
+        $this->insertUserData($this->af->get('mailaddress'), $password);
+        return 'registuser';
     }
 
     /**
@@ -98,5 +100,24 @@ class My_Action_RegistuserDo extends My_ActionClass
         if (count($rs)) {
             return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
         }
+    }
+
+    /**
+     *
+     * DBにユーザ情報を格納する
+     *
+     * @access private
+     * @param mailaddress string
+     * @param password string
+     *
+     * @return void
+     */
+    private function insertUserData($mailaddress, $password)
+    {
+        $this->backend->getDB()->query(
+            "insert into
+              users (id, mailaddress, password)
+             values (nextval('user_id'), '$mailaddress', '$password');"
+        );
     }
 }
