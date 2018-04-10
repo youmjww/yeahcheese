@@ -63,6 +63,12 @@ class My_Action_RegistuserDo extends My_ActionClass
             return 'registuser';
         }
 
+        $isRegisteredMailaddress = $this->isRegisteredMailaddress($this->af->get('mailaddress'));
+        if (Ethna::isError($isRegisteredMailaddress)) {
+            $this->ae->addObject(null, $isRegisteredMailaddress);
+            return 'registuser';
+        }
+
         return null;
     }
 
@@ -75,5 +81,22 @@ class My_Action_RegistuserDo extends My_ActionClass
     public function perform()
     {
          return 'registuser';
+    }
+
+    /**
+     *
+     * すでに登録されたメールアドレスかどうか
+     *
+     * @access private
+     * @param $mailaddress string
+     *
+     * @return mixed null or Ethna::Error
+     */
+    private function isRegisteredMailaddress($mailaddress)
+    {
+        $rs = $this->backend->getDB()->query("SELECT id FROM users where mailaddress = '$mailaddress';")->getRows();
+        if (count($rs)) {
+            return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
+        }
     }
 }

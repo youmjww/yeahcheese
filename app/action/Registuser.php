@@ -55,6 +55,7 @@ class My_Action_Registuser extends My_ActionClass
      */
     public function perform()
     {
-         return 'registuser';
+
+        return 'registuser';
     }
 }

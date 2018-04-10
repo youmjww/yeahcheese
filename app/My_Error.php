@@ -17,3 +17,4 @@
  *  define('E_LOGIN_INVALID', 256);
  */
 define('E_CHECK_PASSWORD', 300);
+define('E_REGISTERED_MAILADDRESS', 301);
