@@ -24,11 +24,15 @@ class My_Form_RegistuserDo extends My_ActionForm
         'password1'      => [
             'type'       => VAR_TYPE_STRING,
             'name'       => 'パスワード１',
+            'max'        => 16,
+            'min'        => 8,
             'required'   => true,
         ],
         'password2'      => [
             'type'       => VAR_TYPE_STRING,
             'name'       => 'パスワード２',
+            'max'        => 16,
+            'min'        => 8,
             'required'   => true,
         ]
     ];
