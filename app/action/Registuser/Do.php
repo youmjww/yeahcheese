@@ -18,6 +18,7 @@ class My_Form_RegistuserDo extends My_ActionForm
         'mailaddress'    => [
             'type'       => VAR_TYPE_STRING,
             'name'       => 'メールアドレス',
+            'max'        => 256,
             'custom'     => 'checkMailaddress',
             'required'   => true,
         ],
