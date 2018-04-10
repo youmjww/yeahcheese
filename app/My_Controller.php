@@ -21,6 +21,7 @@ require_once 'My_ActionForm.php';
 require_once 'My_ViewClass.php';
 require_once 'My_UrlHandler.php';
 require_once 'My_RegistManager.php';
+require_once('adodb5/adodb.inc.php');
 
 /**
  *  My application Controller definition.
@@ -122,7 +123,7 @@ class My_Controller extends Ethna_Controller
         'class'         => 'Ethna_ClassFactory',
         'backend'       => 'Ethna_Backend',
         'config'        => 'Ethna_Config',
-        'db'            => 'Ethna_DB_PEAR',
+        'db'            => 'Ethna_DB_ADOdb',
         'error'         => 'Ethna_ActionError',
         'form'          => 'My_ActionForm',
         'i18n'          => 'Ethna_I18N',
