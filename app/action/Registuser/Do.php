@@ -15,20 +15,20 @@ class My_Form_RegistuserDo extends My_ActionForm
      *  @var      array   form definition.
      */
     public $form = [
-        'mailaddress' => [
-            'type' => VAR_TYPE_STRING,
-            'name'   => 'メールアドレス',
-            'custom' => 'checkMailaddress',
+        'mailaddress'    => [
+            'type'       => VAR_TYPE_STRING,
+            'name'       => 'メールアドレス',
+            'custom'     => 'checkMailaddress',
             'required'   => true,
         ],
-        'password1' => [
-            'type' => VAR_TYPE_STRING,
-            'name'   => 'パスワード１',
+        'password1'      => [
+            'type'       => VAR_TYPE_STRING,
+            'name'       => 'パスワード１',
             'required'   => true,
         ],
-        'password2' => [
-            'type' => VAR_TYPE_STRING,
-            'name'   => 'パスワード２',
+        'password2'      => [
+            'type'       => VAR_TYPE_STRING,
+            'name'       => 'パスワード２',
             'required'   => true,
         ]
     ];
