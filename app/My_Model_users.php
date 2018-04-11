@@ -47,7 +47,7 @@ class My_Model_users
         $password = hash('sha256', pg_escape_string($password));
         $this->backend->getDB()->query(
             "INSERT INTO users (id, mailaddress, password)
-             VALUES (nextval('user_id'), '$mailaddress', '$password');"
+                    VALUES (nextval('user_id'), '$mailaddress', '$password');"
         );
     }
 }

@@ -74,7 +74,6 @@ class My_Action_RegistuserDo extends My_ActionClass
             $this->ae->addObject(null, $isRegisteredMailaddress);
             return 'registuser';
         }
-
         return null;
     }
 
