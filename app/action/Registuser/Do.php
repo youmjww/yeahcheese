@@ -85,7 +85,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     public function perform(): string
     {
-        (new My_Model_users($this->backend))->insertUserData($this->af->get('mailaddress'), $this->af->get('password1'));
+        (new My_ModelUsers($this->backend))->insertUserData($this->af->get('mailaddress'), $this->af->get('password1'));
         return 'home';
     }
 }

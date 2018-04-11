@@ -1,5 +1,5 @@
 <?php
-class My_Model_users
+class My_ModelUsers
 {
     private $backend;
 

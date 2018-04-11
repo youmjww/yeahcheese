@@ -46,7 +46,7 @@ class My_RegistManager
     public function isRegisteredMailaddress(string $mailaddress): ?\Ethna_Error
     {
         $mailaddress = pg_escape_string($mailaddress);
-        $countMailaddress = (new My_Model_users($this->backend))->getUserId($mailaddress);
+        $countMailaddress = (new My_ModelUsers($this->backend))->getUserId($mailaddress);
         if (count($countMailaddress)) {
             return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
         }
