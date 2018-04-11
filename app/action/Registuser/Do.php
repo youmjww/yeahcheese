@@ -85,8 +85,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     public function perform(): string
     {
-        $password = hash('sha256', $this->af->get('password1'));
-        $this->insertUserData($this->af->get('mailaddress'), $password);
+        (new My_Model_users($this->backend))->insertUserData($this->af->get('mailaddress'), $this->af->get('password1'));
         return 'home';
     }
 
@@ -101,32 +100,10 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     private function isRegisteredMailaddress(string $mailaddress): ?\Ethna_Error
     {
-        $mailaddress = pg_escape_string($mailaddress);
-        $countMailaddress = $this->backend->getDB()->query("SELECT id FROM users WHERE mailaddress = '$mailaddress';")->getRows();
+        $countMailaddress = (new My_Model_users($this->backend))->getUserId($mailaddress);
         if (count($countMailaddress)) {
             return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
         }
         return null;
-    }
-
-    /**
-     *
-     * DBにユーザ情報を格納する
-     *
-     * @access private
-     * @param mailaddress string
-     * @param password string
-     *
-     * @return void
-     */
-    private function insertUserData(string $mailaddress, string $password): void
-    {
-        $mailaddress = pg_escape_string($mailaddress);
-        $password = pg_escape_string($password);
-        $this->backend->getDB()->query(
-            "INSERT INTO
-              users (id, mailaddress, password)
-             VALUES (nextval('user_id'), '$mailaddress', '$password');"
-        );
     }
 }
