@@ -23,6 +23,6 @@
     </tr>
   </table>
   <p>
-  <input type="submit" name="action_registuser_do" value="登録">
+    <input type="submit" name="action_registuser_do" value="登録">
   </p>
 </form>
