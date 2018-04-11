@@ -2,4 +2,5 @@ composer.lock
 vendor
 node_modules/
 etc/config.php
+tmp/
 ,
