@@ -15,7 +15,7 @@ class My_Action_Registuser extends My_ActionClass
      *
      *  @return    string  Forward name (null if no errors.)
      */
-    public function prepare()
+    public function prepare(): ?string
     {
         return null;
     }
@@ -27,7 +27,7 @@ class My_Action_Registuser extends My_ActionClass
      *
      *  @return    string  Forward Name.
      */
-    public function perform()
+    public function perform(): string
     {
         return 'registuser';
     }

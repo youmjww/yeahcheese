@@ -11,7 +11,7 @@ class My_RegistManager
      *
      *  @return null or Ethna::Error
      */
-    public function checkPassword(string $password1, string $password2)
+    public function checkPassword(string $password1, string $password2): ?\Ethna_Error
     {
         if ($password1 !== $password2) {
             return Ethna::raiseNotice('パスワードが一致しません。', E_CHECK_PASSWORD);

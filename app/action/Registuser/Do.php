@@ -54,7 +54,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      *  @access    public
      *  @return    string  Forward name (null if no errors.)
      */
-    public function prepare()
+    public function prepare(): ?string
     {
         if ($this->af->validate() > 0) {
             return 'registuser';
@@ -83,7 +83,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      *  @access    public
      *  @return    string  Forward Name.
      */
-    public function perform()
+    public function perform(): string
     {
         $password = hash('sha256', $this->af->get('password1'));
         $this->insertUserData($this->af->get('mailaddress'), $password);
@@ -99,13 +99,14 @@ class My_Action_RegistuserDo extends My_ActionClass
      *
      * @return mixed null or Ethna::Error
      */
-    private function isRegisteredMailaddress(string $mailaddress)
+    private function isRegisteredMailaddress(string $mailaddress): ?\Ethna_Error
     {
         $mailaddress = pg_escape_string($mailaddress);
         $countMailaddress = $this->backend->getDB()->query("SELECT id FROM users WHERE mailaddress = '$mailaddress';")->getRows();
         if (count($countMailaddress)) {
             return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
         }
+        return null;
     }
 
     /**
@@ -118,7 +119,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      *
      * @return void
      */
-    private function insertUserData(string $mailaddress, string $password)
+    private function insertUserData(string $mailaddress, string $password): void
     {
         $mailaddress = pg_escape_string($mailaddress);
         $password = pg_escape_string($password);
