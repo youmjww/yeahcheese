@@ -7,7 +7,7 @@
       {/foreach}
     </ul>
   {/if}
- <table border="0">
+  <table border="0">
     <tr>
       <td>メールアドレス</td>
       <td><input type="email" pattern=".+@.+\..+" name="mailaddress" value="{$form.mailaddress}" title="メールアドレスは、aaa@example.comのような形式で入力してください。"></td>
