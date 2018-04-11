@@ -22,7 +22,7 @@ require_once 'My_ViewClass.php';
 require_once 'My_UrlHandler.php';
 require_once 'My_RegistManager.php';
 require_once('adodb5/adodb.inc.php');
-require_once 'My_Model_users.php';
+require_once 'My_ModelUsers.php';
 
 /**
  *  My application Controller definition.

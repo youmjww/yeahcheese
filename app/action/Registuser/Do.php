@@ -60,20 +60,20 @@ class My_Action_RegistuserDo extends My_ActionClass
             return 'registuser';
         }
 
+        $registManager = new My_RegistManager($this->backend);
         $password1 = $this->af->get('password1');
         $password2 = $this->af->get('password2');
-        $checkPassword = (new My_RegistManager)->checkPassword($password1, $password2);
+        $checkPassword = $registManager->checkPassword($password1, $password2);
         if (Ethna::isError($checkPassword)) {
             $this->ae->addObject(null, $checkPassword);
             return 'registuser';
         }
 
-        $isRegisteredMailaddress = $this->isRegisteredMailaddress($this->af->get('mailaddress'));
+        $isRegisteredMailaddress = $registManager->isRegisteredMailaddress($this->af->get('mailaddress'));
         if (Ethna::isError($isRegisteredMailaddress)) {
             $this->ae->addObject(null, $isRegisteredMailaddress);
             return 'registuser';
         }
-
         return null;
     }
 
@@ -85,25 +85,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      */
     public function perform(): string
     {
-        (new My_Model_users($this->backend))->insertUserData($this->af->get('mailaddress'), $this->af->get('password1'));
+        (new My_ModelUsers($this->backend))->insertUserData($this->af->get('mailaddress'), $this->af->get('password1'));
         return 'home';
-    }
-
-    /**
-     *
-     * すでに登録されたメールアドレスかどうか
-     *
-     * @access private
-     * @param $mailaddress string
-     *
-     * @return mixed null or Ethna::Error
-     */
-    private function isRegisteredMailaddress(string $mailaddress): ?\Ethna_Error
-    {
-        $countMailaddress = (new My_Model_users($this->backend))->getUserId($mailaddress);
-        if (count($countMailaddress)) {
-            return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
-        }
-        return null;
     }
 }
