@@ -15,19 +15,25 @@ class My_Form_RegistuserDo extends My_ActionForm
      *  @var      array   form definition.
      */
     public $form = [
-        'mailaddress' => [
-            'type' => VAR_TYPE_STRING,
-            'name'   => 'メールアドレス',
+        'mailaddress'    => [
+            'type'       => VAR_TYPE_STRING,
+            'name'       => 'メールアドレス',
+            'max'        => 256,
+            'custom'     => 'checkMailaddress',
             'required'   => true,
         ],
-        'password1' => [
-            'type' => VAR_TYPE_STRING,
-            'name'   => 'パスワード１',
+        'password1'      => [
+            'type'       => VAR_TYPE_STRING,
+            'name'       => 'パスワード１',
+            'max'        => 16,
+            'min'        => 8,
             'required'   => true,
         ],
-        'password2' => [
-            'type' => VAR_TYPE_STRING,
-            'name'   => 'パスワード２',
+        'password2'      => [
+            'type'       => VAR_TYPE_STRING,
+            'name'       => 'パスワード２',
+            'max'        => 16,
+            'min'        => 8,
             'required'   => true,
         ]
     ];
@@ -48,7 +54,7 @@ class My_Action_RegistuserDo extends My_ActionClass
      *  @access    public
      *  @return    string  Forward name (null if no errors.)
      */
-    public function prepare()
+    public function prepare(): ?string
     {
         if ($this->af->validate() > 0) {
             return 'registuser';
@@ -56,7 +62,6 @@ class My_Action_RegistuserDo extends My_ActionClass
 
         $password1 = $this->af->get('password1');
         $password2 = $this->af->get('password2');
-
         $checkPassword = (new My_RegistManager)->checkPassword($password1, $password2);
         if (Ethna::isError($checkPassword)) {
             $this->ae->addObject(null, $checkPassword);
@@ -78,10 +83,9 @@ class My_Action_RegistuserDo extends My_ActionClass
      *  @access    public
      *  @return    string  Forward Name.
      */
-    public function perform()
+    public function perform(): string
     {
-        $password = hash('sha256', $this->af->get('password1'));
-        $this->insertUserData($this->af->get('mailaddress'), $password);
+        (new My_Model_users($this->backend))->insertUserData($this->af->get('mailaddress'), $this->af->get('password1'));
         return 'home';
     }
 
@@ -94,30 +98,12 @@ class My_Action_RegistuserDo extends My_ActionClass
      *
      * @return mixed null or Ethna::Error
      */
-    private function isRegisteredMailaddress($mailaddress)
+    private function isRegisteredMailaddress(string $mailaddress): ?\Ethna_Error
     {
-        $countMailaddress = $this->backend->getDB()->query("SELECT id FROM users where mailaddress = '$mailaddress';")->getRows();
+        $countMailaddress = (new My_Model_users($this->backend))->getUserId($mailaddress);
         if (count($countMailaddress)) {
             return Ethna::raiseNotice('すでに登録されているメールアドレスです。', E_REGISTERED_MAILADDRESS);
         }
-    }
-
-    /**
-     *
-     * DBにユーザ情報を格納する
-     *
-     * @access private
-     * @param mailaddress string
-     * @param password string
-     *
-     * @return void
-     */
-    private function insertUserData($mailaddress, $password)
-    {
-        $this->backend->getDB()->query(
-            "insert into
-              users (id, mailaddress, password)
-             values (nextval('user_id'), '$mailaddress', '$password');"
-        );
+        return null;
     }
 }
