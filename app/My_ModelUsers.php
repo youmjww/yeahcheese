@@ -2,6 +2,7 @@
 class My_ModelUsers
 {
     private $backend;
+    private $db;
 
     /**
      *
@@ -14,6 +15,7 @@ class My_ModelUsers
     public function __construct(&$backend)
     {
         $this->backend = $backend;
+        $this->db = $this->backend->getDB();
     }
 
     /**
@@ -28,7 +30,7 @@ class My_ModelUsers
     public function getUserId(string $mailaddress): array
     {
         $mailaddress = pg_escape_string($mailaddress);
-        return $this->backend->getDB()->query("SELECT id FROM users WHERE mailaddress = '$mailaddress';")->getRows();
+        return $this->db->query("SELECT id FROM users WHERE mailaddress = '$mailaddress';")->getRows();
     }
 
     /**
@@ -45,7 +47,7 @@ class My_ModelUsers
     {
         $mailaddress = pg_escape_string($mailaddress);
         $password = hash('sha256', pg_escape_string($password));
-        $this->backend->getDB()->query(
+        $this->db->query(
             "INSERT INTO users (id, mailaddress, password)
                     VALUES (nextval('user_id'), '$mailaddress', '$password');"
         );
