@@ -39,6 +39,26 @@ class My_ModelUsers
 
     /**
      *
+     * メールアドレスからハッシュ化されたパスワードを取得する
+     *
+     * @access public
+     * @param  $mailaddress
+     *
+     * @return string
+     */
+    public function getUserPassword(string $mailaddress): string
+    {
+        $sql = "SELECT password
+                  FROM users
+                 WHERE mailaddress = ?
+        ";
+
+        return $this->db->getRow($sql, [$mailaddress])['password'];
+    }
+
+
+    /**
+     *
      * DBにユーザ情報を格納する
      *
      * @access public

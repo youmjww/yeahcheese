@@ -56,6 +56,11 @@ class My_Action_LoginDo extends My_ActionClass
             return 'login';
         }
 
+        $checkPassword = (new My_LoginManager($this->backend))->checkPassword($this->af->get('password'), $this->af->get('mailaddress'));
+        if (Ethna::isError($checkPassword)) {
+            $this->ae->addObject(null, $checkPassword);
+            return 'login';
+        }
         return null;
     }
 
