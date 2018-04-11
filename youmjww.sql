@@ -1,5 +1,5 @@
 // usersテーブルの作成
-CREATE TABLE users ( id INTEGER, mailaddress TEXT, password TEXT, admin char(4));
+CREATE TABLE users ( id INTEGER, mailaddress TEXT, password TEXT);
 // user id用のシーケンス作成 
 CREATE SEQUENCE user_id START WITH 1;
 
