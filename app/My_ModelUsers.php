@@ -44,9 +44,9 @@ class My_ModelUsers
      * @access public
      * @param  $mailaddress
      *
-     * @return string
+     * @return string or null
      */
-    public function getUserPassword(string $mailaddress): string
+    public function getUserPassword(string $mailaddress): ?string
     {
         $sql = "SELECT password
                   FROM users
