@@ -29,8 +29,12 @@ class My_ModelUsers
      */
     public function getUserId(string $mailaddress): array
     {
-        $mailaddress = pg_escape_string($mailaddress);
-        return $this->db->query("SELECT id FROM users WHERE mailaddress = '$mailaddress';")->getRows();
+        $sql = "SELECT id
+                  FROM users
+                 WHERE mailaddress = ?
+        ";
+
+        return $this->db->getRow($sql, [$mailaddress]);
     }
 
     /**
@@ -45,11 +49,10 @@ class My_ModelUsers
      */
     public function insertUserData(string $mailaddress, string $password): void
     {
-        $mailaddress = pg_escape_string($mailaddress);
-        $password = hash('sha256', pg_escape_string($password));
-        $this->db->query(
-            "INSERT INTO users (id, mailaddress, password)
-                    VALUES (nextval('user_id'), '$mailaddress', '$password');"
-        );
+        $password = hash('sha256', $password);
+        $sql = "INSERT INTO users (id, mailaddress, password)
+                     VALUES (nextval('user_id'), ?, ?)
+        ";
+        $this->db->getAssoc($sql, [$mailaddress, $password]);
     }
 }
