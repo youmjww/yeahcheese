@@ -9,6 +9,9 @@
 
 class My_Form_RegistuserDo extends My_ActionForm
 {
+    const MAX_PASSWORD_LENGTH = 16;
+    const MIN_PASSWORD_LENGTH = 8;
+    const MAX_MAILADDRESS_LENGTH = 256;
     /**
      *  @access   protected
      *
@@ -18,22 +21,22 @@ class My_Form_RegistuserDo extends My_ActionForm
         'mailaddress'    => [
             'type'       => VAR_TYPE_STRING,
             'name'       => 'メールアドレス',
-            'max'        => 256,
+            'max'        => self::MAX_MAILADDRESS_LENGTH,
             'custom'     => 'checkMailaddress',
             'required'   => true,
         ],
         'password1'      => [
             'type'       => VAR_TYPE_STRING,
             'name'       => 'パスワード１',
-            'max'        => 16,
-            'min'        => 8,
+            'max'        => self::MAX_PASSWORD_LENGTH,
+            'min'        => self::MIN_PASSWORD_LENGTH,
             'required'   => true,
         ],
         'password2'      => [
             'type'       => VAR_TYPE_STRING,
             'name'       => 'パスワード２',
-            'max'        => 16,
-            'min'        => 8,
+            'max'        => self::MAX_PASSWORD_LENGTH,
+            'min'        => self::MIN_PASSWORD_LENGTH,
             'required'   => true,
         ]
     ];
