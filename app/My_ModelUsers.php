@@ -55,7 +55,7 @@ class My_ModelUsers
              WHERE mailaddress = ?
         ";
 
-        return $this->db->getRow($sql, [$mailaddress])['password'];
+        return $this->db->getOne($sql, [$mailaddress]);
     }
 
 
