@@ -29,13 +29,35 @@ class My_ModelUsers
      */
     public function getUserId(string $mailaddress): array
     {
-        $sql = "SELECT id
-                  FROM users
-                 WHERE mailaddress = ?
+        $sql = "
+            SELECT id
+              FROM users
+             WHERE mailaddress = ?
         ";
 
         return $this->db->getRow($sql, [$mailaddress]);
     }
+
+    /**
+     *
+     * メールアドレスからハッシュ化されたパスワードを取得する
+     *
+     * @access public
+     * @param  $mailaddress
+     *
+     * @return string or null
+     */
+    public function getUserPassword(string $mailaddress): ?string
+    {
+        $sql = "
+            SELECT password
+              FROM users
+             WHERE mailaddress = ?
+        ";
+
+        return $this->db->getOne($sql, [$mailaddress]);
+    }
+
 
     /**
      *
@@ -50,8 +72,9 @@ class My_ModelUsers
     public function insertUserData(string $mailaddress, string $password): void
     {
         $password = hash('sha256', $password);
-        $sql = "INSERT INTO users (id, mailaddress, password)
-                     VALUES (nextval('user_id'), ?, ?)
+        $sql = "
+            INSERT INTO users (mailaddress, password)
+                 VALUES (?, ?)
         ";
         $this->db->getAssoc($sql, [$mailaddress, $password]);
     }
