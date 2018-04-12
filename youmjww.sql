@@ -1,7 +1,7 @@
 CREATE TABLE users (
-                     id           INTEGER UNIQUE SERIAL PRIMARY KEY,
+                     id           INTEGER SERIAL PRIMARY KEY,
                      mailaddress  VARCHAR(256) UNIQUE NOT NULL,
-                     password     VARCHAR(64) UNIQUE NOT NULL
+                     password     VARCHAR(64)  NOT NULL
                    );
 COMMENT ON TABLE users IS 'ユーザテーブルの作成';
 
@@ -17,7 +17,7 @@ CREATE TABLE events (
                       id          INTEGER UNIQUE SERIAL PRIMARY KEY,
                       open_day    TIMESTAMP,
                       end_day     TIMESTAMP,
-                      event_name  VARCHAR(30) UNIQUE NOT NULL,
+                      event_name  VARCHAR(30) NOT NULL,
                       user_id     INTEGER UNIQUE NOT NULL,
                       auth_key    VARCHAR(9) UNIQUE NOT NULL
                     );
