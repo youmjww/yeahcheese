@@ -1,20 +1,11 @@
 <?php
-// vim: foldmethod=marker
 /**
- *  My_ActionClass.php
+ *  My_LoginActionClass.php
  *
  *  @author     {$author}
  *  @package    My
  */
 
-// {{{ My_ActionClass
-/**
- *  action execution class
- *
- *  @author     {$author}
- *  @package    My
- *  @access     public
- */
 class My_LoginActionClass extends My_ActionClass
 {
     /**
@@ -24,7 +15,7 @@ class My_LoginActionClass extends My_ActionClass
      *  @return string  Forward name.
      *                  (null if no errors. false if we have something wrong.)
      */
-    public function authenticate()
+    public function authenticate(): ?string
     {
         if (! $this->session->isStart()) {
             return 'login';
@@ -33,5 +24,3 @@ class My_LoginActionClass extends My_ActionClass
         return parent::authenticate();
     }
 }
-// }}}
-
