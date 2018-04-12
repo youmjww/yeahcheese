@@ -1,3 +1,10 @@
+<script type="text/javascript" src="https://momentjs.com/downloads/moment.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/createEvent.js"></script>
+
 <h1>イベント作成</h1>
 <form action="." method="post">
   {if count($errors)}
@@ -14,12 +21,11 @@
     </tr>
     <tr>
       <td>イベント開始日</td>
-      <td><input type="date" name="openDay" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required></td>
+      <td><input type="date" name="openDay" id="eventOpenDay" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value="" required></td>
     </tr>
     <tr>
       <td>イベント終了日</td>
-      <td><input type="date" name="endDay" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required></td>
-
+      <td><input type="date" name="endDay" id="eventEndDay" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" value="" required></td>
     </tr>
     <tr>
       <td>写真</td>
