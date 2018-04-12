@@ -11,7 +11,7 @@ COMMENT ON COLUMN users.password IS 'ユーザのハッシュ化されたパス�
 
 
 CREATE TABLE photos (
-                      id          INTEGER UNIQUE SERIAL PRIMARY KEY,
+                      id          INTEGER SERIAL PRIMARY KEY,
                       name        TEXT NOT NULL,
                       image_path  TEXT UNIQUE NOT NULL,
                       event_id    INTEGER NOT NULL
@@ -24,11 +24,11 @@ COMMENT ON COLUMN photos.event_id IS 'events.id 写真のイベントを識別�
 
 
 CREATE TABLE events (
-                      id          INTEGER UNIQUE SERIAL PRIMARY KEY,
+                      id          INTEGER SERIAL PRIMARY KEY,
                       open_day    TIMESTAMP,
                       end_day     TIMESTAMP,
                       event_name  VARCHAR(30) NOT NULL,
-                      user_id     INTEGER UNIQUE NOT NULL,
+                      user_id     INTEGER NOT NULL,
                       auth_key    VARCHAR(9) UNIQUE NOT NULL
                     );
 COMMENT ON TABLE events IS 'イベントを扱うテーブル';
