@@ -3,7 +3,7 @@ CREATE TABLE users (
                      mailaddress  VARCHAR(256) UNIQUE NOT NULL,
                      password     VARCHAR(64)  NOT NULL
                    );
-COMMENT ON TABLE users IS 'ユーザテーブルの作成';
+COMMENT ON TABLE users IS 'ユーザ情報を扱うテーブル';
 
 CREATE TABLE photos (
                       id          INTEGER UNIQUE SERIAL PRIMARY KEY,
@@ -11,7 +11,7 @@ CREATE TABLE photos (
                       image_path  TEXT UNIQUE NOT NULL,
                       event_id    INTEGER NOT NULL
                     );
-COMMENT ON TABLE photos IS 'photosテーブルの作成';
+COMMENT ON TABLE photos IS '写真を扱うテーブル';
 
 CREATE TABLE events (
                       id          INTEGER UNIQUE SERIAL PRIMARY KEY,
@@ -21,4 +21,4 @@ CREATE TABLE events (
                       user_id     INTEGER UNIQUE NOT NULL,
                       auth_key    VARCHAR(9) UNIQUE NOT NULL
                     );
-COMMENT ON TABLE events IS 'eventテーブルの作成';
+COMMENT ON TABLE events IS 'イベントを扱うテーブル';
