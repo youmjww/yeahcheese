@@ -72,6 +72,12 @@ class My_Action_LoginDo extends My_ActionClass
      */
     public function perform(): string
     {
+        $this->session->start();
+        $userInfo = [
+            'mailaddress' =>  $this->af->get('mailaddress')
+        ];
+        $this->session->set('userInfo', $userInfo);
+
         return 'home';
     }
 }

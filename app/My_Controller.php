@@ -24,6 +24,7 @@ require_once 'My_RegistManager.php';
 require_once('adodb5/adodb.inc.php');
 require_once 'My_ModelUsers.php';
 require_once 'My_LoginManager.php';
+require_once 'My_LoginActionClass.php';
 
 /**
  *  My application Controller definition.
