@@ -6,10 +6,10 @@ CREATE TABLE users (
 COMMENT ON TABLE users IS 'ユーザテーブルの作成';
 
 CREATE TABLE photos (
-                      id        INTEGER UNIQUE SERIAL PRIMARY KEY,
-                      name      TEXT NOT NULL,
-                      base64    TEXT,
-                      event_id  INTEGER NOT NULL
+                      id          INTEGER UNIQUE SERIAL PRIMARY KEY,
+                      name        TEXT NOT NULL,
+                      image_path  TEXT UNIQUE NOT NULL,
+                      event_id    INTEGER NOT NULL
                     );
 COMMENT ON TABLE photos IS 'photosテーブルの作成';
 
