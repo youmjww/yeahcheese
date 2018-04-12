@@ -7,16 +7,16 @@ COMMENT ON TABLE users IS 'ユーザテーブルの作成';
 
 CREATE TABLE photos (
                       id        INTEGER UNIQUE NOT NULL PRIMARY KEY,
-                      name      TEXT UNIQUE NOT NULL,
+                      name      TEXT NOT NULL,
                       base64    TEXT,
-                      event_id  INTEGER
+                      event_id  INTEGER NOT NULL
                     );
 COMMENT ON TABLE photos IS 'photosテーブルの作成';
 
 CREATE TABLE events (
                       id          INTEGER PRIMARY KEY,
-                      open_day    TIMESTAMP UNIQUE NOT NULL,
-                      end_day     TIMESTAMP UNIQUE NOT NULL,
+                      open_day    TIMESTAMP,
+                      end_day     TIMESTAMP,
                       event_name  VARCHAR(30) UNIQUE NOT NULL,
                       user_id     INTEGER UNIQUE NOT NULL,
                       auth_key    VARCHAR(9) UNIQUE NOT NULL
