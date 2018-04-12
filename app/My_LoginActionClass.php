@@ -15,7 +15,7 @@
  *  @package    My
  *  @access     public
  */
-class My_LoginActionClass extends Ethna_ActionClass
+class My_LoginActionClass extends My_ActionClass
 {
     /**
      *  authenticate before executing action.
@@ -31,30 +31,6 @@ class My_LoginActionClass extends Ethna_ActionClass
         }
 
         return parent::authenticate();
-    }
-
-    /**
-     *  Preparation for executing action. (Form input check, etc.)
-     *
-     *  @access public
-     *  @return string  Forward name.
-     *                  (null if no errors. false if we have something wrong.)
-     */
-    public function prepare()
-    {
-        return parent::prepare();
-    }
-
-    /**
-     *  execute action.
-     *
-     *  @access public
-     *  @return string  Forward name.
-     *                  (we does not forward if returns null.)
-     */
-    public function perform()
-    {
-        return parent::perform();
     }
 }
 // }}}
