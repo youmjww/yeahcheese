@@ -1,6 +1,6 @@
 <div>
   <h1>ホーム</h1>
-  <h3>めーるあどれす</h3>
+  <h3>{$session.userInfo.mailaddress}</h3>
 </div>
 <div>
   <ul>
