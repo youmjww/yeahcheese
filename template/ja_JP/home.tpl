@@ -4,18 +4,18 @@
 </div>
 <div>
   <ul>
-    <li>イベント作成</li>
-    <li>イベント一覧</li>
+    <li><a href="/?action_createEvent=true">イベント作成</a></li>
+    <li><a href="/?action_listEvent=true">イベント一覧</a></li>
   </ul>
   <ul>
-    <li>アカウント設定</li>
+    <li><a href="/?action_accountConfig=true">アカウント設定</a></li>
     <li><a href="/?action_logout=true">ログアウト</a></li>
   </ul>
 </div>
 <div>
   <h1>ようこそ</h1>
   <ul>
-    <li>イベント作成</li>
-    <li>イベント一覧</li>
+    <li><a href="/?action_createEvent=true">イベント作成</a></li>
+    <li><a href="/?action_listEvent=true">イベント一覧</a></li>
   </ul>
 </div>
