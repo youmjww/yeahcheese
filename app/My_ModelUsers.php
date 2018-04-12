@@ -73,8 +73,8 @@ class My_ModelUsers
     {
         $password = hash('sha256', $password);
         $sql = "
-            INSERT INTO users (id, mailaddress, password)
-                 VALUES (nextval('user_id'), ?, ?)
+            INSERT INTO users (mailaddress, password)
+                 VALUES (?, ?)
         ";
         $this->db->getAssoc($sql, [$mailaddress, $password]);
     }
