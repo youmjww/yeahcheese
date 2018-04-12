@@ -33,6 +33,6 @@
     </tr>
   </table>
   <p>
-    <input type="submit" name="action_login_do" value="イベント作成">
+    <input type="submit" name="action_createEvent_do" value="イベント作成">
   </p>
 </form>

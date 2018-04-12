@@ -7,7 +7,7 @@
  *  @access     public
  *  @package    My
  */
-class My_Action_CreateEvent extends My_LoginActionClass
+class My_Action_CreateEventDo extends My_LoginActionClass
 {
     /**
      *  Login action implementation.
