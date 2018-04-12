@@ -9,7 +9,7 @@
   </ul>
   <ul>
     <li>アカウント設定</li>
-    <li>ログアウト</li>
+    <li><a href="/?action_logout=true">ログアウト</a></li>
   </ul>
 </div>
 <div>
