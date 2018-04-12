@@ -29,7 +29,7 @@ class My_LoginManager
     public function checkPassword(string $password, string $mailaddress): ?\Ethna_Error
     {
         $hashPassword = (new My_ModelUsers($this->backend))->getUserPassword($mailaddress);
-        if ($hashPassword !== hash('SHA256', $password)) {
+        if ($hashPassword !== hash('sha256', $password)) {
             return Ethna::raiseNotice('パスワード又はメールアドレスが不正です', E_FAILED_LOGIN);
         }
         return null;
