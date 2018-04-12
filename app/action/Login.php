@@ -15,7 +15,7 @@ class My_Action_Login extends My_ActionClass
      *  @access    public
      *  @return    string  Forward Name.
      */
-    public function perform()
+    public function perform(): string
     {
         return 'login';
     }
