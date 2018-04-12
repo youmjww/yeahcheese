@@ -6,7 +6,7 @@
  *  @access     public
  *  @package    My
  */
-class My_Action_home extends My_ActionClass
+class My_Action_home extends My_LoginActionClass
 {
     /**
      *  preprocess regist user action.
@@ -17,6 +17,9 @@ class My_Action_home extends My_ActionClass
      */
     public function prepare(): ?string
     {
+        if (!$this->session->isStart()) {
+            return 'login';
+        }
         return null;
     }
 
