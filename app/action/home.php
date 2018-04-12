@@ -6,7 +6,7 @@
  *  @access     public
  *  @package    My
  */
-class My_Action_home extends My_LoginActionClass
+class My_Action_Home extends My_LoginActionClass
 {
     /**
      *  Index action implementation.
