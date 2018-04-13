@@ -19,3 +19,4 @@
 define('E_CHECK_PASSWORD', 300);
 define('E_REGISTERED_MAILADDRESS', 301);
 define('E_FAILED_LOGIN', 302);
+define('E_DATE', 302);

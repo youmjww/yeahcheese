@@ -56,6 +56,14 @@ class My_Action_CreateEventDo extends My_LoginActionClass
             return 'createEvent';
         }
 
+        $eventManager = new My_EventManager($this->backend);
+        $openDay = $this->af->get('openDay');
+        $endDay = $this->af->get('endDay');
+        if ($openDay > $endDay) {
+            $this->ae->addObject(null, Ethna::raiseNotice('イベントの開始日は終了日より前にしてください', E_DATE));
+            return 'createEvent';
+        }
+
         return null;
     }
     /**
