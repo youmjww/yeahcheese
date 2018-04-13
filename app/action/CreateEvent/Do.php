@@ -46,7 +46,11 @@ class My_Form_CreateEventDo extends My_ActionForm
     {
         foreach ($this->form_vars[$photos] as $photo) {
             if ($photo['size'] > 5000000) {
-                $this->ae->add(null, '各画像サイズは5MB未満にしてください。', E_FORM_INVALIDVALUE);
+                $this->ae->add(null, '各画像サイズは5MB未満にしてください。');
+            }
+
+            if (exif_imagetype($photo['tmp_name']) !== IMAGETYPE_JPEG) {
+                $this->ae->add(null, 'アップロードできるファイルはjpegのみです。');
             }
         }
     }
