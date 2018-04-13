@@ -7,6 +7,9 @@
 
 <h1>イベント作成</h1>
 <form action="." method="post" enctype="multipart/form-data">
+  <ul>
+    <p id="sizeError"></p>
+  </ul>
   {if count($errors)}
     <ul>
       {foreach from=$errors item=error}
@@ -29,10 +32,10 @@
     </tr>
     <tr>
       <td>写真</td>
-      <td><input type="file" name="photos[]" accept=".jpg,.jpeg,image/jpeg" required multiple></td>
+      <td><input type="file" name="photos[]" id="uploadFiles" accept=".jpg,.jpeg,image/jpeg" required multiple></td>
     </tr>
   </table>
   <p>
-    <input type="submit" name="action_createEvent_do" value="イベント作成">
+    <input type="submit" name="action_createEvent_do" id="create" value="イベント作成">
   </p>
 </form>
