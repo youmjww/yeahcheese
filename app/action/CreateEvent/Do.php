@@ -31,7 +31,7 @@ class My_Form_CreateEventDo extends My_ActionForm
             'type'       => [VAR_TYPE_FILE],
             'form_type'  => FORM_TYPE_FILE,
             'name'       => '写真',
-            'custom'     => 'checkFileCapacity',
+            'custom'     => 'checkFile',
             'required'   => true,
         ],
     ];
@@ -42,7 +42,7 @@ class My_Form_CreateEventDo extends My_ActionForm
      *  @param     string $photos フォームの項目名
      *  @return    string  Forward name (null if no errors.)
      */
-    public function checkFileCapacity($photos)
+    public function checkFile($photos)
     {
         foreach ($this->form_vars[$photos] as $photo) {
             if ($photo['size'] > 5000000) {
