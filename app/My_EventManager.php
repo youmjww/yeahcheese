@@ -28,6 +28,14 @@ class My_EventManager
      */
     public function savePhotos($photos, $userId)
     {
+        $modelEvents = new My_ModelEvents($this->backend);
+
+        // イベント作成
+        $modelEvents->createEvent();
+
+        // 自身の最後に作成したイベントidを取得
+        $modelEvents->getMyLastEventId($userId);
+
         if (!file_exists(self::IMAGE_PATH)) {
             mkdir(self::IMAGE_PATH, 0777);
         }
@@ -37,7 +45,8 @@ class My_EventManager
             $photoName = tempnam(self::IMAGE_PATH, $userId);
             rename($photo['tmp_name'], $photoName);
 
-           // 画像の名前とパスをDBへ保存
+
+            // 画像の名前とパスをDBへ保存
         }
     }
 }
