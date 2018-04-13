@@ -94,6 +94,7 @@ class My_Action_CreateEventDo extends My_LoginActionClass
      */
     public function perform(): string
     {
+        (new My_EventManager($this->backend))->savePhotos($this->af->get('photos'), $this->session->get('userInfo')['userId']);
         return 'createEvent';
     }
 }
