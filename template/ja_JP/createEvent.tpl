@@ -20,7 +20,7 @@
   <table border="0">
     <tr>
       <td>イベント名</td>
-      <td><input type="text" name="eventName" required></td>
+      <td><input type="text" name="eventName" value="{$form.eventName}" required></td>
     </tr>
     <tr>
       <td>イベント開始日</td>
