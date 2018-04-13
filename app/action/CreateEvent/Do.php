@@ -31,9 +31,25 @@ class My_Form_CreateEventDo extends My_ActionForm
             'type'       => [VAR_TYPE_FILE],
             'form_type'  => FORM_TYPE_FILE,
             'name'       => '写真',
+            'custom'     => 'checkFileCapacity',
             'required'   => true,
         ],
     ];
+    /**
+     *  各写真の容量チェック
+     *
+     *  @access    public
+     *  @param     string $photos フォームの項目名
+     *  @return    string  Forward name (null if no errors.)
+     */
+    public function checkFileCapacity($photos)
+    {
+        foreach ($this->form_vars[$photos] as $photo) {
+            if ($photo['size'] > 5000000) {
+                $this->ae->add(null, '各画像サイズは5MB未満にしてください。', E_FORM_INVALIDVALUE);
+            }
+        }
+    }
 }
 
 /**
