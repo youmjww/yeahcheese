@@ -72,9 +72,11 @@ class My_Action_LoginDo extends My_ActionClass
      */
     public function perform(): string
     {
+        $mailaddress = $this->af->get('mailaddress');
         $this->session->start();
         $userInfo = [
-            'mailaddress' =>  $this->af->get('mailaddress')
+            'id'          =>  (new My_ModelUsers($this->backend))->getUserId($mailaddress)['id'],
+            'mailaddress' =>  $mailaddress
         ];
         $this->session->set('userInfo', $userInfo);
 
