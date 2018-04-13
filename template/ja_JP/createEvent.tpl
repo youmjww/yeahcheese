@@ -29,7 +29,7 @@
     </tr>
     <tr>
       <td>写真</td>
-      <td><input type="file" name="photos[]" required multiple></td>
+      <td><input type="file" name="photos[]" accept=".jpg,.jpeg,image/jpeg" required multiple></td>
     </tr>
   </table>
   <p>
