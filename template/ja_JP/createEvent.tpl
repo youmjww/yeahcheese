@@ -6,7 +6,7 @@
 <script type="text/javascript" src="/js/createEvent.js"></script>
 
 <h1>イベント作成</h1>
-<form action="." method="post">
+<form action="." method="post" enctype="multipart/form-data">
   {if count($errors)}
     <ul>
       {foreach from=$errors item=error}
@@ -29,7 +29,7 @@
     </tr>
     <tr>
       <td>写真</td>
-      <td><input type="file" name="photos" required></td>
+      <td><input type="file" name="photos[]" required multiple></td>
     </tr>
   </table>
   <p>

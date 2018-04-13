@@ -28,7 +28,8 @@ class My_Form_CreateEventDo extends My_ActionForm
             'required'   => true,
         ],
         'photos'      => [
-            'type'       => VAR_TYPE_FILE,
+            'type'       => [VAR_TYPE_FILE],
+            'form_type'  => FORM_TYPE_FILE,
             'name'       => '写真',
             'required'   => true,
         ],
@@ -56,7 +57,6 @@ class My_Action_CreateEventDo extends My_LoginActionClass
             return 'createEvent';
         }
 
-        $eventManager = new My_EventManager($this->backend);
         $openDay = $this->af->get('openDay');
         $endDay = $this->af->get('endDay');
         if ($openDay > $endDay) {
