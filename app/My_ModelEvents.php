@@ -39,4 +39,22 @@ class My_ModelEvents
         }
         return $authKey;
     }
+
+    /**
+     *  userIdの最後に作成されたイベントを持ってくる
+     *
+     *  @param  $userId
+     *
+     *  @return int
+     */
+    public function getMyLastEventId(int $userId): int
+    {
+        $sql = "(
+            SELECT id
+            FROM events
+            WHERE user_id = ?
+            ORDER BY id DESC
+        )";
+        return $this->db->getOne($sql, [$userId]);
+    }
 }
