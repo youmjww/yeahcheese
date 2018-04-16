@@ -64,6 +64,11 @@ class My_EventManager
      */
     public function getEventInfo(int $userId): array
     {
-        return (new My_ModelEvents($this->backend))->getEventInfo($userId);
+        $events = (new My_ModelEvents($this->backend))->getEventInfo($userId);
+        foreach ($events as $key => $event) {
+            $events[$key]['photo_count'] = (new My_ModelPhotos($this->backend))->getPhotoCount($event['id']);
+        }
+
+        return $events;
     }
 }
