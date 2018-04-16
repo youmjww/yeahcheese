@@ -24,12 +24,13 @@ class My_ModelEvents
         $str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'));
         $authKey = '';
         for ($i = 0; $i < 9; $i++) {
-            $authKey .= $authKey[rand(0, count($str) - 1)];
+            $authKey .= $str[rand(0, count($str) - 1)];
         }
 
         $sql = "
-            INSERT INTO events (open_day, end_daym, event_name, user_id, auth_key)
-                 VALUES ($openDay, $endDay, $eventName, $userId, $authKey
+            INSERT INTO events (open_day, end_day, event_name, user_id, auth_key)
+                 VALUES (?, ?, ?, ?, ?
         )";
+        $this->db->getAssoc($sql, [$openDay . ' 00:00:00', $endDay . ' 00:00:00', $eventName, $userId, $authKey]);
     }
 }

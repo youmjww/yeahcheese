@@ -26,15 +26,12 @@ class My_EventManager
      * @param  photos array
      *
      */
-    public function savePhotos($photos, $userId)
+    public function savePhotos($photos, $userId, $openDay, $endDay, $eventName)
     {
         $modelEvents = new My_ModelEvents($this->backend);
 
         // イベント作成
-        $modelEvents->createEvent();
-
-        // 自身の最後に作成したイベントidを取得
-        $modelEvents->getMyLastEventId($userId);
+        $modelEvents->createEvent($userId, $openDay, $endDay, $eventName);
 
         if (!file_exists(self::IMAGE_PATH)) {
             mkdir(self::IMAGE_PATH, 0777);
@@ -44,7 +41,6 @@ class My_EventManager
             // 画像を公開フォルダに保存
             $photoName = tempnam(self::IMAGE_PATH, $userId);
             rename($photo['tmp_name'], $photoName);
-
 
             // 画像の名前とパスをDBへ保存
         }
