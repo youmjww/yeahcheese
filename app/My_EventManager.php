@@ -54,4 +54,16 @@ class My_EventManager
         }
         return $eventId;
     }
+
+    /**
+     *  イベント情報の取得
+     *
+     *  @param $userId int
+     *
+     *  @return eventInfo array
+     */
+    public function getEventInfo(int $userId): array
+    {
+        return (new My_ModelEvents($this->backend))->getEventInfo($userId);
+    }
 }

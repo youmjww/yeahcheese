@@ -91,4 +91,22 @@ class My_ModelEvents
         ";
         return $this->db->getOne($sql, [$eventId]);
     }
+
+    /**
+     *  イベント情報の取得
+     *
+     *  @param $userId int
+     *
+     *  @return eventInfo array
+     */
+    public function getEventInfo(int $userId): array
+    {
+        $sql = "
+            SELECT *
+              FROM events
+             WHERE user_id = ?
+        ";
+
+        return $this->db->getAll($sql, $userId);
+    }
 }
