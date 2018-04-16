@@ -37,12 +37,14 @@ class My_EventManager
             mkdir(self::IMAGE_PATH, 0777);
         }
 
+        // ループの中で何回も実行すると、トラフィックの無駄なのでここで実行しておく
+        $eventId = $modelEvents->getMyLastEventId($userId);
         foreach ($photos as $photo) {
             // 画像を公開フォルダに保存
-            $photoName = tempnam(self::IMAGE_PATH, $userId);
-            rename($photo['tmp_name'], $photoName);
+            $photoPath = tempnam(self::IMAGE_PATH, $userId);
+            rename($photo['tmp_name'], $photoPath);
 
-            // 画像の名前とパスをDBへ保存
+            (new My_ModelPhotos($this->backend))->savePhoto($eventId, basename($photoPath));
         }
     }
 }
