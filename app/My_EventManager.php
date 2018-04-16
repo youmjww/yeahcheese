@@ -26,7 +26,7 @@ class My_EventManager
      * @param  photos array
      *
      */
-    public function savePhotos($photos, $userId, $openDay, $endDay, $eventName)
+    public function uploadPhotos($photos, $userId, $openDay, $endDay, $eventName)
     {
         $modelEvents = new My_ModelEvents($this->backend);
 
