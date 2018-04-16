@@ -56,21 +56,8 @@ class My_Form_CreateEventDo extends My_ActionForm
     }
 }
 
-/**
- *  Index action implementation.
- *
- *  @author     {$author}
- *  @access     public
- *  @package    My
- */
 class My_Action_CreateEventDo extends My_LoginActionClass
 {
-     /**
-     *  preprocess regist user action.
-     *
-     *  @access    public
-     *  @return    string  Forward name (null if no errors.)
-     */
     public function prepare(): ?string
     {
         if ($this->af->validate() > 0) {
@@ -87,12 +74,6 @@ class My_Action_CreateEventDo extends My_LoginActionClass
         return null;
     }
 
-    /**
-     *  Login action implementation.
-     *
-     *  @access    public
-     *  @return    string  Forward Name.
-     */
     public function perform(): string
     {
         $photos = $this->af->get('photos');

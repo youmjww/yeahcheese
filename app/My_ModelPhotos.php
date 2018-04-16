@@ -26,7 +26,7 @@ class My_ModelPhotos
      *
      *  @return void
      */
-    public function savePhoto(int $eventId, string $photoName)
+    public function savePhoto(int $eventId, string $photoName): void
     {
         $sql = "
             INSERT INTO photos (event_id, name)

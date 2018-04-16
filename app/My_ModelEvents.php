@@ -18,6 +18,13 @@ class My_ModelEvents
         $this->db = $this->backend->getDB();
     }
 
+    /**
+     *  イベントを作成する
+     *
+     *  @param  $userId
+     *
+     *  @return void
+     */
     public function createEvent($userId, $openDay, $endDay, $eventName)
     {
         $sql = "
@@ -30,7 +37,15 @@ class My_ModelEvents
         } while ($result === false);
     }
 
-    private function createAuthKey() {
+
+    /**
+     *  認証キーを作成する
+     *
+     *
+     *  @return $authKey string
+     */
+    private function createAuthKey(): string
+    {
         // 認証キー生成
         $str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'));
         $authKey = '';
@@ -59,17 +74,19 @@ class My_ModelEvents
     }
 
     /**
-        *  認証キーを取得する
-        *
-        *  @param $eventId int
+     *  認証キーを取得する
+     *
+     *  @param $eventId int
+     *
+     *  @return AuthKey string
      */
-    public function getAuthKey(int $eventId) {
+    public function getAuthKey(int $eventId): string
+    {
         $sql = "
             SELECT auth_key
               FROM events
              WHERE id = ?
         ";
         return $this->db->getOne($sql, [$eventId]);
-
     }
 }

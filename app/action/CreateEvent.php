@@ -9,12 +9,6 @@
  */
 class My_Action_CreateEvent extends My_LoginActionClass
 {
-    /**
-     *  Login action implementation.
-     *
-     *  @access    public
-     *  @return    string  Forward Name.
-     */
     public function perform(): string
     {
         return 'createEvent';

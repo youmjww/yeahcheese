@@ -23,10 +23,16 @@ class My_EventManager
      * 公開ディレクトリに画像を移動
      *
      * @access public
-     * @param  photos array
+     * @param  $photos array
+     * @param  $userId int
+     * @param  $openDay string
+     * @param  $endDay string
+     * @param  $eventName string
+     *
+     * @return int
      *
      */
-    public function uploadPhotos($photos, $userId, $openDay, $endDay, $eventName)
+    public function uploadPhotos(array $photos, int $userId, string $openDay, string $endDay, string $eventName): int
     {
         $modelEvents = new My_ModelEvents($this->backend);
 
