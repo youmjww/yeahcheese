@@ -3,6 +3,9 @@
 class My_Form_CreateEventDo extends My_ActionForm
 {
     const MAX_EVENT_NAME_LENGTH = 30;
+    const DATE_TYPE = '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/';
+    const MAX_PHOTO_SIZE = 5000000;
+
     /**
      *  @access   protected
      *
@@ -18,13 +21,13 @@ class My_Form_CreateEventDo extends My_ActionForm
         'openDay'      => [
             'type'       => VAR_TYPE_DATETIME,
             'name'       => '公開開始日',
-            'regexp'    =>  '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
+            'regexp'     =>  self::DATE_TYPE,
             'required'   => true,
         ],
         'endDay'      => [
             'type'       => VAR_TYPE_DATETIME,
             'name'       => '公開終了日',
-            'regexp'    =>  '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/',
+            'regexp'     =>  self::DATE_TYPE,
             'required'   => true,
         ],
         'photos'      => [
@@ -45,7 +48,7 @@ class My_Form_CreateEventDo extends My_ActionForm
     public function checkFile($photos)
     {
         foreach ($this->form_vars[$photos] as $photo) {
-            if ($photo['size'] > 5000000) {
+            if ($photo['size'] > self::MAX_PHOTO_SIZE) {
                 $this->ae->add(null, '各画像サイズは5MB未満にしてください。');
             }
 
