@@ -95,7 +95,14 @@ class My_Action_CreateEventDo extends My_LoginActionClass
      */
     public function perform(): string
     {
-        (new My_EventManager($this->backend))->uploadPhotos($this->af->get('photos'), $this->session->get('userInfo')['id'], $this->af->get('openDay'), $this->af->get('endDay'), $this->af->get('eventName'));
+        $photos = $this->af->get('photos');
+        $userId = $this->session->get('userInfo')['id'];
+        $openDay = $this->af->get('openDay');
+        $endDay = $this->af->get('endDay');
+        $eventName = $this->af->get('eventName');
+
+        $eventId = (new My_EventManager($this->backend))->uploadPhotos($photos, $userId, $openDay, $endDay, $eventName);
+        $this->af->setApp('authKey', (new My_ModelEvents($this->backend))->getAuthKey($eventId));
         return 'successEvent';
     }
 }

@@ -57,4 +57,19 @@ class My_ModelEvents
         )";
         return $this->db->getOne($sql, [$userId]);
     }
+
+    /**
+        *  認証キーを取得する
+        *
+        *  @param $eventId int
+     */
+    public function getAuthKey(int $eventId) {
+        $sql = "
+            SELECT auth_key
+              FROM events
+             WHERE id = ?
+        ";
+        return $this->db->getOne($sql, [$eventId]);
+
+    }
 }

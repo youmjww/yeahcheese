@@ -46,5 +46,6 @@ class My_EventManager
 
             (new My_ModelPhotos($this->backend))->savePhoto($eventId, basename($photoPath));
         }
+        return $eventId;
     }
 }
