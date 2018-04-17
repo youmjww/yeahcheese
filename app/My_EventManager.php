@@ -64,11 +64,22 @@ class My_EventManager
      */
     public function getEventInfo(int $userId): array
     {
+        return $this->setPublishDay($userId);
+    }
+
+    /**
+     *  イベント情報に公開期間を埋め込む
+     *
+     *  @param $userId int
+     *
+     *  @return eventInfo array
+     */
+    private function setPublishDay(int $userId): array
+    {
         $events = (new My_ModelEvents($this->backend))->getEventInfo($userId);
         foreach ($events as $key => $event) {
             $events[$key]['photo_count'] = (new My_ModelPhotos($this->backend))->getPhotoCount($event['id']);
         }
-
         return $events;
     }
 }
