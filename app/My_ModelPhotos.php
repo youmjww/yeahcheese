@@ -51,4 +51,21 @@ class My_ModelPhotos
         ";
         return count($this->db->getAll($sql, $eventId));
     }
+
+    /**
+     *  イベントの写真を取得
+     *
+     *  @param id int
+     *
+     *  @return array
+     */
+    public function getEventPhoto($eventId): array
+    {
+        $sql = "
+            SELECT *
+            FROM photos
+            WHERE event_id = ?
+        ";
+        return $this->db->getAll($sql, $eventId);
+    }
 }

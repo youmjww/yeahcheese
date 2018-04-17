@@ -38,6 +38,9 @@ class My_Action_EditEvent extends My_LoginActionClass
 
     public function perform()
     {
+        $eventId = $this->af->get('id');
+        $eventAndPhoto = (new My_EventManager($this->backend))->getEventAndPhoto($eventId);
+        $this->af->setApp('eventAndPhoto', $eventAndPhoto);
         return 'editEvent';
     }
 }

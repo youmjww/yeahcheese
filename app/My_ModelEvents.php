@@ -127,4 +127,22 @@ class My_ModelEvents
 
         return $this->db->getOne($sql, $eventId);
     }
+
+    /**
+     *  イベントIDからイベントを引っ張ってくる
+     *
+     *  @param $eventId int
+     *
+     *  @return array
+     */
+    public function getEvent(int $eventId): array
+    {
+        $sql = "
+            SELECT *
+              FROM events
+             WHERE id = ?
+        ";
+
+        return $this->db->getAll($sql, $eventId);
+    }
 }
