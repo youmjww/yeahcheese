@@ -40,7 +40,7 @@ class My_ModelPhotos
      *
      *  @param id int
      */
-    public function getPhotoCount($eventId)
+    public function getPhotoCount($eventId): int
     {
         $sql = "
             SELECT id
