@@ -97,7 +97,7 @@ class My_ModelEvents
      *
      *  @param $userId int
      *
-     *  @return eventInfo array
+     *  @return array
      */
     public function getUserEvents(int $userId): array
     {

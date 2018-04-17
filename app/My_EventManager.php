@@ -60,7 +60,7 @@ class My_EventManager
      *
      *  @param $userId int
      *
-     *  @return $eventInfo array
+     *  @return array
      */
     public function getEventInfo(int $userId): array
     {

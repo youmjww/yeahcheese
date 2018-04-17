@@ -39,6 +39,8 @@ class My_ModelPhotos
      *  イベントごとの写真枚数を取得
      *
      *  @param id int
+     *
+     *  @return int
      */
     public function getPhotoCount($eventId): int
     {
