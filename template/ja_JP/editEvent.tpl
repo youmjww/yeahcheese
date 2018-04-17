@@ -1,5 +1,7 @@
+<link rel="stylesheet" type="text/css" href="css/editEvent.css">
+
 <h2>イベント編集</h2>
-  <div>
+  <div class="infobox">
     <div>イベント名: <input type="text" value="{$app.eventInfo.0.event_name}"></div>
     <div>
       公開開始日: <input type="date" value="{$app.eventInfo.0.open_day}">
@@ -16,8 +18,11 @@
     </div>
   </div>
 
-<div>
+<div class="photos">
     {foreach from=$app.eventPhoto item=photo}
-        <img src="/sherImage/{$photo.name}" width="250" height="250" style="margin:auto;">
+      <div class="photo">
+        <input type="checkbox" >{$photo.iteration}
+        <img src="/sherImage/{$photo.name}" width="250" height="250">
+      </div>
     {/foreach}
 </div>
