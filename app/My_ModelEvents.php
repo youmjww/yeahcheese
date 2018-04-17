@@ -33,8 +33,8 @@ class My_ModelEvents
         )";
 
         do {
-            $openDay = date_format(date_create($openDay), 'Y-m-d H:i:s');
-            $endDay = date_format(date_create($endDay), 'Y-m-d H:i:s');
+            $openDay = (new DateTime($openDay))->format('Y-m-d H:i:s');
+            $endDay = (new DateTime($endDay))->format('Y-m-d H:i:s');
             $result = $this->db->getAssoc($sql, [$openDay, $endDay, $eventName, $userId, $this->createAuthKey()]);
         } while ($result === false);
     }
