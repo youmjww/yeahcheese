@@ -60,23 +60,23 @@ class My_EventManager
      *
      *  @param $userId int
      *
-     *  @return eventInfo array
+     *  @return $eventInfo array
      */
     public function getEventInfo(int $userId): array
     {
-        return $this->formatPublishDay($this->setPublishDay($userId));
+        $events = (new My_ModelEvents($this->backend))->getEventInfo($userId);
+        return $this->formatPublishDay($this->setPublishDay($events));
     }
 
     /**
      *  イベント情報に公開期間を埋め込む
      *
-     *  @param $userId int
+     *  @param $events array
      *
-     *  @return eventInfo array
+     *  @return $events array
      */
-    private function setPublishDay(int $userId): array
+    private function setPublishDay(array $events): array
     {
-        $events = (new My_ModelEvents($this->backend))->getEventInfo($userId);
         foreach ($events as $key => $event) {
             $events[$key]['photo_count'] = (new My_ModelPhotos($this->backend))->getPhotoCount($event['id']);
         }
@@ -86,16 +86,16 @@ class My_EventManager
     /**
      *  イベント情報の日付をフォーマット
      *
-     *  @param $eventInfo array
+     *  @param $events array
      *
-     *  @return eventInfo array
+     *  @return $events array
      */
-    private function formatPublishDay(array $eventInfo): array
+    private function formatPublishDay(array $events): array
     {
-        foreach ($eventInfo as $key => $event) {
-            $eventInfo[$key]['open_day'] = date_format(date_create($event['open_day']), 'Y/m/d');
-            $eventInfo[$key]['end_day'] = date_format(date_create($event['end_day']), 'Y/m/d');
+        foreach ($events as $key => $event) {
+            $events[$key]['open_day'] = date_format(date_create($event['open_day']), 'Y/m/d');
+            $events[$key]['end_day'] = date_format(date_create($event['end_day']), 'Y/m/d');
         }
-        return $eventInfo;
+        return $events;
     }
 }
