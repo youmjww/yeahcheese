@@ -98,7 +98,7 @@ class My_EventManager
         }
         return $events;
     }
-    
+
     /**
      *  イベント情報の日付をハイフン区切りでフォーマット
      *
@@ -137,11 +137,18 @@ class My_EventManager
      *
      *  @param $eventId int
      */
-    public function getEventAndPhoto(int $eventId)
+    public function getEvent(int $eventId)
     {
-        $eventInfo = (new My_ModelEvents($this->backend))->getEvent($eventId);
-        $photos = (new My_ModelPhotos($this->backend))->getEventPhoto($eventId);
-        $eventInfo = $this->formatPublishDayOnHyphen($eventInfo);
-        return array_merge($eventInfo, $photos);
+        return $this->formatPublishDayOnHyphen((new My_ModelEvents($this->backend))->getEvent($eventId));
+    }
+
+    /**
+     *  イベントの写真を持ってくる
+     *
+     *  @param $eventId int
+     */
+    public function getEventPhotos(int $eventId)
+    {
+        return (new My_ModelPhotos($this->backend))->getEventPhoto($eventId);
     }
 }
