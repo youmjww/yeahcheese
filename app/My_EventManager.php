@@ -93,8 +93,8 @@ class My_EventManager
     private function formatPublishDay(array $events): array
     {
         foreach ($events as $key => $event) {
-            $events[$key]['open_day'] = date_format(date_create($event['open_day']), 'Y/m/d');
-            $events[$key]['end_day'] = date_format(date_create($event['end_day']), 'Y/m/d');
+            $events[$key]['open_day'] = (new DateTime($event['open_day']))->format('Y/m/d');
+            $events[$key]['end_day'] = (new DateTime($event['end_day']))->format('Y/m/d');
         }
         return $events;
     }
