@@ -28,6 +28,7 @@ require_once 'My_LoginActionClass.php';
 require_once 'My_EventManager.php';
 require_once 'My_ModelEvents.php';
 require_once 'My_ModelPhotos.php';
+require_once 'My_EditManager.php';
 
 /**
  *  My application Controller definition.

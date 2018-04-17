@@ -53,6 +53,23 @@ class My_ModelPhotos
     }
 
     /**
+     *  写真IDから写真名を取得
+     *
+     *  @param id int
+     *
+     *  @return array
+     */
+    public function getPhotoName($photoId): string
+    {
+        $sql = "
+            SELECT name
+            FROM photos
+            WHERE id = ?
+        ";
+        return $this->db->getOne($sql, $photoId);
+    }
+
+    /**
      *  イベントの写真を取得
      *
      *  @param id int
@@ -67,5 +84,20 @@ class My_ModelPhotos
             WHERE event_id = ?
         ";
         return $this->db->getAll($sql, $eventId);
+    }
+
+    /**
+     *  指定されたファイル名の写真を削除する
+     *
+     *  @param $photoName string
+     *
+     */
+    public function delPhoto(int $photoId)
+    {
+        $sql = "
+            DELETE FROM photos
+             WHERE id = ?
+        ";
+        $this->db->getAssoc($sql, $photoId);
     }
 }
