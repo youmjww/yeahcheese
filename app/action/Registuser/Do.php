@@ -90,10 +90,12 @@ class My_Action_RegistuserDo extends My_ActionClass
     {
         $mailaddress = $this->af->get('mailaddress');
 
-        (new My_ModelUsers($this->backend))->insertUserData($mailaddress, $this->af->get('password1'));
+        $users = new My_ModelUsers($this->backend);
+        $users->insertUserData($mailaddress, $this->af->get('password1'));
 
         $this->session->start();
         $userInfo = [
+            'id'          =>  $users->getUserId($mailaddress)['id'],
             'mailaddress' =>  $mailaddress
         ];
         $this->session->set('userInfo', $userInfo);
