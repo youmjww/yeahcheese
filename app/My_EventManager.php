@@ -54,4 +54,48 @@ class My_EventManager
         }
         return $eventId;
     }
+
+    /**
+     *  イベント情報の取得
+     *
+     *  @param $userId int
+     *
+     *  @return array
+     */
+    public function getEventInfo(int $userId): array
+    {
+        $events = (new My_ModelEvents($this->backend))->getUserEvents($userId);
+        return $this->formatPublishDay($this->setNumberOfPhoto($events));
+    }
+
+    /**
+     *  イベント情報に写真の枚数を埋め込む
+     *
+     *  @param $events array
+     *
+     *  @return $events array
+     */
+    private function setNumberOfPhoto(array $events): array
+    {
+        foreach ($events as $key => $event) {
+            $events[$key]['photo_count'] = (new My_ModelPhotos($this->backend))->getPhotoCount($event['id']);
+        }
+        return $events;
+    }
+
+    /**
+     *  イベント情報の日付をフォーマット
+     *
+     *  @param $events array
+     *
+     *  @return $events array
+     */
+    private function formatPublishDay(array $events): array
+    {
+        foreach ($events as $key => $event) {
+            $events[$key]['open_day'] = (new DateTime($event['open_day']))->format('Y/m/d');
+            $events[$key]['end_day'] = (new DateTime($event['end_day']))->format('Y/m/d');
+        }
+        return $events;
+    }
 }

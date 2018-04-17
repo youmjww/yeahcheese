@@ -34,4 +34,21 @@ class My_ModelPhotos
         ";
         $this->db->getAssoc($sql, [$eventId, $photoName]);
     }
+
+    /**
+     *  イベントごとの写真枚数を取得
+     *
+     *  @param id int
+     *
+     *  @return int
+     */
+    public function getPhotoCount($eventId): int
+    {
+        $sql = "
+            SELECT id
+            FROM photos
+            WHERE event_id = ?
+        ";
+        return count($this->db->getAll($sql, $eventId));
+    }
 }
