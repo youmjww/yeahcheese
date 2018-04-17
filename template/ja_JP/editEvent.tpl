@@ -17,9 +17,7 @@
   </div>
 
 <div>
-  <div>
     {foreach from=$app.eventPhoto item=photo}
-      <img src="/sherImage/{$photo.name}">
+        <img src="/sherImage/{$photo.name}" width="250" height="250" style="margin:auto;">
     {/foreach}
-  </div>
 </div>
