@@ -8,4 +8,10 @@
     <div>
       認証キー: {$app.eventAndPhoto.0.auth_key}
     </div>
+    <div>
+      *注:削除する写真を選択していた場合、選択された写真は削除されます。<input type="submit" value="更新">
+    </div>
+    <div>
+      写真の追加: <input type="file" name="addPhoto">
+    </div>
   </div>
