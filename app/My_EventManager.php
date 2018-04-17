@@ -98,4 +98,20 @@ class My_EventManager
         }
         return $events;
     }
+
+    /**
+     *  現在のユーザのイベントかどうか調べる
+     *
+     *  @param  eventId int
+     *  @param  userId int
+     *
+     *  @return bool
+     */
+    public function isEventOwnerCurrentUser(int $eventId, int $userId): bool
+    {
+        if ((new My_ModelEvents($this->backend))->getEventOwner($eventId) === $userId) {
+            return true;
+        }
+        return false;
+    }
 }

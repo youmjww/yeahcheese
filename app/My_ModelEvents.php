@@ -109,4 +109,22 @@ class My_ModelEvents
 
         return $this->db->getAll($sql, $userId);
     }
+
+    /**
+     *  イベントIDのオーナIDを取得
+     *
+     *  @param $EventId int
+     *
+     *  @return int
+     */
+    public function getEventOwner(int $eventId): ?int
+    {
+        $sql = "
+            SELECT user_id
+              FROM events
+             WHERE id = ?
+        ";
+
+        return $this->db->getOne($sql, $eventId);
+    }
 }
