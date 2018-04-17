@@ -64,7 +64,7 @@ class My_EventManager
      */
     public function getEventInfo(int $userId): array
     {
-        return $this->setPublishDay($userId);
+        return $this->formatPublishDay($this->setPublishDay($userId));
     }
 
     /**
@@ -81,5 +81,21 @@ class My_EventManager
             $events[$key]['photo_count'] = (new My_ModelPhotos($this->backend))->getPhotoCount($event['id']);
         }
         return $events;
+    }
+
+    /**
+     *  イベント情報の日付をフォーマット
+     *
+     *  @param $eventInfo array
+     *
+     *  @return eventInfo array
+     */
+    private function formatPublishDay(array $eventInfo): array
+    {
+        foreach ($eventInfo as $key => $event) {
+            $eventInfo[$key]['open_day'] = date_format(date_create($event['open_day']), 'Y/m/d');
+            $eventInfo[$key]['end_day'] = date_format(date_create($event['end_day']), 'Y/m/d');
+        }
+        return $eventInfo;
     }
 }
