@@ -93,13 +93,13 @@ class My_ModelEvents
     }
 
     /**
-     *  イベント情報の取得
+     *  ユーザ毎のイベント情報の取得
      *
      *  @param $userId int
      *
      *  @return eventInfo array
      */
-    public function getEventInfo(int $userId): array
+    public function getUserEvents(int $userId): array
     {
         $sql = "
             SELECT *

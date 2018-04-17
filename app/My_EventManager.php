@@ -64,7 +64,7 @@ class My_EventManager
      */
     public function getEventInfo(int $userId): array
     {
-        $events = (new My_ModelEvents($this->backend))->getEventInfo($userId);
+        $events = (new My_ModelEvents($this->backend))->getUserEvents($userId);
         return $this->formatPublishDay($this->setPublishDay($events));
     }
 
