@@ -18,13 +18,34 @@ class My_Form_Delete extends My_ActionForm
         'eventId' => [
             'type' => VAR_TYPE_STRING,
             'name' => 'eventId',
-            'requir' => true
+            'required' => true
         ],
     ];
 }
 
 class My_Action_Delete extends My_LoginActionClass
 {
+    public function prepare()
+    {
+        $userId = $this->session->get('userInfo')[id];
+        $eventId = $this->af->get('eventId');
+
+        if ($this->af->get('photos') === null) {
+            $this->ae->add(null, '削除する写真が選択されていません');
+            header("Location: ?action_editEvent=true&id=$eventId");
+        }
+
+        if ($this->af->validate() > 0 || ! is_numeric($eventId)) {
+            return 'error404';
+        }
+
+        if (! (new My_EventManager($this->backend))->isEventOwnerCurrentUser($eventId, $userId)) {
+            return 'error403';
+        }
+        return null;
+    }
+
+
     public function perform()
     {
         $eventId = $this->af->get('eventId');
