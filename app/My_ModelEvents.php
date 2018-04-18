@@ -138,7 +138,7 @@ class My_ModelEvents
      *
      *  @param $EventId int
      *
-     *  @return int
+     *  @return int or null
      */
     public function getEventOwner(int $eventId): ?int
     {

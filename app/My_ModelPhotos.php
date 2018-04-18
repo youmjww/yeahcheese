@@ -57,7 +57,7 @@ class My_ModelPhotos
      *
      *  @param id int
      *
-     *  @return array
+     *  @return string
      */
     public function getPhotoName($photoId): string
     {
@@ -91,6 +91,7 @@ class My_ModelPhotos
      *
      *  @param $photoName string
      *
+     *  @return void
      */
     public function delPhoto(int $photoId)
     {

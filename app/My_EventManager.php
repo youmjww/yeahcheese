@@ -136,6 +136,8 @@ class My_EventManager
      *  イベントを取ってくる
      *
      *  @param $eventId int
+     *
+     *  @return void
      */
     public function getEvent(int $eventId)
     {
@@ -146,6 +148,8 @@ class My_EventManager
      *  イベントの写真を持ってくる
      *
      *  @param $eventId int
+     *
+     *  @return void
      */
     public function getEventPhotos(int $eventId)
     {

@@ -85,9 +85,10 @@ class My_Action_UpdateEvent extends My_LoginActionClass
     /**
      *  各写真の容量チェック
      *
-     *  @access    private
-     *  @param     string $photos フォームの項目名
-     *  @return    string  Forward name (null if no errors.)
+     *  @access private
+     *  @param  string $photos フォームの項目名
+     *
+     *  @return mixed void or null
      */
     private function checkFile($photos, $eventId)
     {
