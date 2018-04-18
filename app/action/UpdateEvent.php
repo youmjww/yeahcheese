@@ -9,6 +9,7 @@
 
 class My_Form_UpdateEvent extends My_ActionForm
 {
+    const MAX_PHOTO_SIZE = 5000000;
     public $form = [
         'openDay'    => [
             'type'       => VAR_TYPE_STRING,
@@ -41,11 +42,34 @@ class My_Form_UpdateEvent extends My_ActionForm
             'custom'     => 'checkFile',
         ],
     ];
+
+    /**
+     *  各写真の容量とjpegかどうかをチェック
+     *
+     *  @access private
+     *  @param  string $photos フォームの項目名
+     *
+     */
+    public function checkFile($photos)
+    {
+        if (! is_uploaded_file($this->form_vars[$photos][0]['tmp_name'])) {
+            return null;
+        }
+
+        foreach ($this->form_vars[$photos] as $photo) {
+            if ($photo['size'] > self::MAX_PHOTO_SIZE) {
+                $this->ae->add(null, '各画像サイズは5MB未満にしてください。');
+            }
+
+            if (exif_imagetype($photo['tmp_name']) !== IMAGETYPE_JPEG) {
+                $this->ae->add(null, 'アップロードできるファイルはjpegのみです。');
+            }
+        }
+    }
 }
 
 class My_Action_UpdateEvent extends My_LoginActionClass
 {
-    const MAX_PHOTO_SIZE = 5000000;
 
     public function prepare()
     {
@@ -55,6 +79,7 @@ class My_Action_UpdateEvent extends My_LoginActionClass
 
         if ($this->af->validate() > 0) {
             header("Location: ?action_editEvent=true&id=$eventId");
+            exit;
         }
 
         if (! is_numeric($eventId)) {
@@ -65,7 +90,7 @@ class My_Action_UpdateEvent extends My_LoginActionClass
             return 'error403';
         }
 
-        return $this->checkFile($this->af->get('photos'), $this->af->get('eventId'));
+        return null;
     }
 
     public function perform()
@@ -78,34 +103,7 @@ class My_Action_UpdateEvent extends My_LoginActionClass
 
         (new My_EditManager($this->backend))->updateEvent($openDay, $endDay, $eventId, $eventName, $photos);
         header("Location: ?action_editEvent=true&id=$eventId");
-
-        return null;
+        exit;
     }
 
-    /**
-     *  各写真の容量チェック
-     *
-     *  @access private
-     *  @param  string $photos フォームの項目名
-     *
-     *  @return mixed void or null
-     */
-    private function checkFile($photos, $eventId)
-    {
-        if (! is_uploaded_file($photos[0]['tmp_name'])) {
-            return null;
-        }
-
-        foreach ($photos as $photo) {
-            if ($photo['size'] > self::MAX_PHOTO_SIZE) {
-                $this->ae->add(null, '各画像サイズは5MB未満にしてください。');
-                header("Location: ?action_editEvent=true&id=$eventId");
-            }
-
-            if (exif_imagetype($photo['tmp_name']) !== IMAGETYPE_JPEG) {
-                $this->ae->add(null, 'アップロードできるファイルはjpegのみです。');
-                header("Location: ?action_editEvent=true&id=$eventId");
-            }
-        }
     }
-}

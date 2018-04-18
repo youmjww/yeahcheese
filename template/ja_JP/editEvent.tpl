@@ -12,7 +12,7 @@
       認証キー: {$app.eventInfo.0.auth_key}
     </div>
     <div>
-      写真の追加: <input type="file" name="photos[]" multiple>
+      写真の追加: <input type="file" name="photos[]" accept=".jpg,.jpeg,image/jpeg" multiple>
     </div>
 
     <div>
