@@ -1,5 +1,4 @@
 <h1>error!!!</h1>
-
 {if count($errors)}
   <ul>
     {foreach from=$errors item=error}

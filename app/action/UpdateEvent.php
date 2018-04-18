@@ -35,7 +35,7 @@ class My_Form_UpdateEvent extends My_ActionForm
             'required' => true
         ],
 
-        'photos'      => [
+        'photos' => [
             'type'       => [VAR_TYPE_FILE],
             'form_type'  => FORM_TYPE_FILE,
             'name'       => '写真',
@@ -76,7 +76,6 @@ class My_Action_UpdateEvent extends My_LoginActionClass
         $userId = $this->session->get('userInfo')[id];
         $eventId = $this->af->get('eventId');
 
-
         if ($this->af->validate() > 0) {
             return 'error';
         }
@@ -104,5 +103,4 @@ class My_Action_UpdateEvent extends My_LoginActionClass
         header("Location: ?action_editEvent=true&id=$eventId");
         exit;
     }
-
-    }
+}

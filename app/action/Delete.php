@@ -45,7 +45,6 @@ class My_Action_Delete extends My_LoginActionClass
         return null;
     }
 
-
     public function perform()
     {
         $eventId = $this->af->get('eventId');

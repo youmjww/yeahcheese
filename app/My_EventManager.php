@@ -115,7 +115,6 @@ class My_EventManager
         return $events;
     }
 
-
     /**
      *  現在のユーザのイベントかどうか調べる
      *
