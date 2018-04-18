@@ -63,8 +63,8 @@ class My_ModelPhotos
     {
         $sql = "
             SELECT name
-            FROM photos
-            WHERE id = ?
+              FROM photos
+             WHERE id = ?
         ";
         return $this->db->getOne($sql, $photoId);
     }
@@ -80,8 +80,8 @@ class My_ModelPhotos
     {
         $sql = "
             SELECT *
-            FROM photos
-            WHERE event_id = ?
+              FROM photos
+             WHERE event_id = ?
         ";
         return $this->db->getAll($sql, $eventId);
     }

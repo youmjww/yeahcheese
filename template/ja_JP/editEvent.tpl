@@ -19,7 +19,6 @@
       写真の追加: <input type="file" name="photos[]" multiple>
     </div>
   </div>
-
   <div class="photos">
     {foreach from=$app.eventPhoto item=photo}
       <div class="photo">
@@ -28,5 +27,5 @@
       </div>
     {/foreach}
   </div>
-  <input type="hidden" name="eventId" value="{$app.eventInfo.0.id}">
+<input type="hidden" name="eventId" value="{$app.eventInfo.0.id}">
 </form>

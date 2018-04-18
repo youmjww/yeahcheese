@@ -13,24 +13,24 @@ class My_Form_UpdateEvent extends My_ActionForm
         'openDay'    => [
             'type'       => VAR_TYPE_STRING,
             'name'       => '公開開始日',
-            'required' => true
+            'required'   => true
         ],
 
         'endDay' => [
-            'type' => VAR_TYPE_STRING,
-            'name' => '公開終了日',
+            'type'     => VAR_TYPE_STRING,
+            'name'     => '公開終了日',
             'required' => true
         ],
 
         'eventName' => [
-            'type' => VAR_TYPE_STRING,
-            'name' => 'イベント名',
+            'type'     => VAR_TYPE_STRING,
+            'name'     => 'イベント名',
             'required' => true
         ],
 
         'eventId' => [
-            'type' => VAR_TYPE_INT,
-            'name' => 'eventId',
+            'type'     => VAR_TYPE_INT,
+            'name'     => 'eventId',
             'required' => true
         ],
 
@@ -85,7 +85,7 @@ class My_Action_UpdateEvent extends My_LoginActionClass
     /**
      *  各写真の容量チェック
      *
-     *  @access    public
+     *  @access    private
      *  @param     string $photos フォームの項目名
      *  @return    string  Forward name (null if no errors.)
      */

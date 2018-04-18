@@ -19,9 +19,9 @@ class My_EditManager
     }
 
     /**
-        *  指定された写真をDBとディレクトリから削除する
-        *
-        *  @param photoNames array
+     *  指定された写真をDBとディレクトリから削除する
+     *
+     *  @param photoNames array
      */
     public function deletePhotos($photosId)
     {

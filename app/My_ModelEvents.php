@@ -52,19 +52,15 @@ class My_ModelEvents
      */
     public function updateEvent($openDay, $endDay, $eventId, $eventName)
     {
-        // $sql = "
-        //     INSERT INTO events (open_day, end_day, event_name, user_id, auth_key)
-        //          VALUES (?, ?, ?, ?, ?
-        // )";
         $sql = "
             UPDATE events
-            SET (open_day, end_day, event_name) = (?,?,?)
-            WHERE id = ?
+               SET (open_day, end_day, event_name) = (?,?,?)
+             WHERE id = ?
         ";
 
-            $openDay = (new DateTime($openDay))->format('Y-m-d H:i:s');
-            $endDay = (new DateTime($endDay))->format('Y-m-d H:i:s');
-            $this->db->getAssoc($sql, [$openDay, $endDay, $eventName, $eventId]);
+        $openDay = (new DateTime($openDay))->format('Y-m-d H:i:s');
+        $endDay = (new DateTime($endDay))->format('Y-m-d H:i:s');
+        $this->db->getAssoc($sql, [$openDay, $endDay, $eventName, $eventId]);
     }
 
     /**

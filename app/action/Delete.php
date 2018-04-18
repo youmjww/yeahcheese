@@ -10,14 +10,14 @@
 class My_Form_Delete extends My_ActionForm
 {
     public $form = [
-        'photos'    => [
-            'type'       => [VAR_TYPE_STRING],
-            'name'       => 'photoIds',
+        'photos' => [
+            'type'  => [VAR_TYPE_STRING],
+            'name'  => 'photoIds',
         ],
 
         'eventId' => [
-            'type' => VAR_TYPE_STRING,
-            'name' => 'eventId',
+            'type'     => VAR_TYPE_STRING,
+            'name'     => 'eventId',
             'required' => true
         ],
     ];
