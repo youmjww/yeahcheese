@@ -12,11 +12,12 @@
       認証キー: {$app.eventInfo.0.auth_key}
     </div>
     <div>
+      写真の追加: <input type="file" name="photos[]" multiple>
+    </div>
+
+    <div>
       <input type="submit" name="action_delete" value="削除">
       <input type="submit" name="action_updateEvent" value="更新">
-    </div>
-    <div>
-      写真の追加: <input type="file" name="photos[]" multiple>
     </div>
   </div>
   <div class="photos">
