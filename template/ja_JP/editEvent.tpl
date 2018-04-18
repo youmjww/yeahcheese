@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="css/editEvent.css">
 
 <h2>イベント編集</h2>
-<form action="." method="post" enctype="multipart/form-data">
+{form ethna_action="editEvent" enctype="file" name="editEvent"}
   <div class="infobox">
     <div>イベント名: <input type="text" name="eventName" value="{$app.eventInfo.0.event_name}"></div>
     <div>
@@ -28,5 +28,5 @@
       </div>
     {/foreach}
   </div>
-<input type="hidden" name="eventId" value="{$app.eventInfo.0.id}">
-</form>
+  <input type="hidden" name="eventId" value="{$app.eventInfo.0.id}">
+{/form}

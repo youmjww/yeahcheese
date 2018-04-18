@@ -78,8 +78,7 @@ class My_Action_UpdateEvent extends My_LoginActionClass
 
 
         if ($this->af->validate() > 0) {
-            header("Location: ?action_editEvent=true&id=$eventId");
-            exit;
+            return 'error';
         }
 
         if (! is_numeric($eventId)) {

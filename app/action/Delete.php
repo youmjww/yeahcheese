@@ -32,7 +32,7 @@ class My_Action_Delete extends My_LoginActionClass
 
         if ($this->af->get('photos') === null) {
             $this->ae->add(null, '削除する写真が選択されていません');
-            header("Location: ?action_editEvent=true&id=$eventId");
+            return 'error';
         }
 
         if ($this->af->validate() > 0 || ! is_numeric($eventId)) {
