@@ -13,27 +13,55 @@ class My_Form_UpdateEvent extends My_ActionForm
         'openDay'    => [
             'type'       => VAR_TYPE_STRING,
             'name'       => '公開開始日',
-            'requir' => true
+            'required' => true
         ],
 
         'endDay' => [
             'type' => VAR_TYPE_STRING,
             'name' => '公開終了日',
-            'requir' => true
+            'required' => true
         ],
 
         'eventName' => [
             'type' => VAR_TYPE_STRING,
             'name' => 'イベント名',
-            'requir' => true
+            'required' => true
         ],
 
         'eventId' => [
             'type' => VAR_TYPE_STRING,
             'name' => 'eventId',
-            'requir' => true
+            'required' => true
+        ],
+
+        'photos'      => [
+            'type'       => [VAR_TYPE_FILE],
+            'form_type'  => FORM_TYPE_FILE,
+            'name'       => '写真',
+            'custom'     => 'checkFile',
         ],
     ];
+
+    /**
+     *  各写真の容量チェック
+     *
+     *  @access    public
+     *  @param     string $photos フォームの項目名
+     *  @return    string  Forward name (null if no errors.)
+     */
+    public function checkFile($photos)
+    {
+        foreach ($this->form_vars[$photos] as $photo) {
+            if ($photo['size'] > self::MAX_PHOTO_SIZE) {
+                $this->ae->add(null, '各画像サイズは5MB未満にしてください。');
+            }
+
+            if (exif_imagetype($photo['tmp_name']) !== IMAGETYPE_JPEG) {
+                $this->ae->add(null, 'アップロードできるファイルはjpegのみです。');
+            }
+        }
+    }
+
 }
 
 class My_Action_UpdateEvent extends My_LoginActionClass
@@ -44,8 +72,9 @@ class My_Action_UpdateEvent extends My_LoginActionClass
         $eventName = $this->af->get('eventName');
         $openDay = $this->af->get('openDay');
         $endDay = $this->af->get('endDay');
+        $photos = $this->af->get('photos');
 
-        (new My_EditManager($this->backend))->updateEvent($openDay, $endDay, $eventId, $eventName);
+        (new My_EditManager($this->backend))->updateEvent($openDay, $endDay, $eventId, $eventName, $photos);
         header("Location: ?action_editEvent=true&id=$eventId");
 
         return null;

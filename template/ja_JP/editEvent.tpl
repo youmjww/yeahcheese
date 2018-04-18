@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="css/editEvent.css">
 
 <h2>イベント編集</h2>
-<form action="." method="post">
+<form action="." method="post" enctype="multipart/form-data">
   <div class="infobox">
     <div>イベント名: <input type="text" name="eventName" value="{$app.eventInfo.0.event_name}"></div>
     <div>
@@ -16,7 +16,7 @@
       <input type="submit" name="action_updateEvent" value="更新">
     </div>
     <div>
-      写真の追加: <input type="file" name="addPhoto">
+      写真の追加: <input type="file" name="photos[]" multiple>
     </div>
   </div>
 

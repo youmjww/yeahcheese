@@ -3,6 +3,8 @@ class My_EditManager
 {
     private $backend;
 
+    const IMAGE_PATH = './sherImage';
+
     /**
      *
      * backendへ値を入れるためのコンストラクタ
@@ -38,11 +40,21 @@ class My_EditManager
      *  @param  $endDay
      *  @param  $eventId
      *  @param  $eventName
+     *  @param  $photos
      *
      *  @return void
      */
-    public function updateEvent($openDay, $endDay, $eventId, $eventName)
+    public function updateEvent($openDay, $endDay, $eventId, $eventName, $photos)
     {
         (new My_ModelEvents($this->backend))->updateEvent($openDay, $endDay, $eventId, $eventName);
+        if (is_uploaded_file($photos[0]['tmp_name'])) {
+            foreach ($photos as $photo) {
+                // 画像を公開フォルダに保存
+                $photoPath = tempnam(self::IMAGE_PATH, $userId);
+                rename($photo['tmp_name'], $photoPath);
+
+                (new My_ModelPhotos($this->backend))->savePhoto($eventId, basename($photoPath));
+            }
+        }
     }
 }
