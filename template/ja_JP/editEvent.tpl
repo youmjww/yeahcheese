@@ -3,16 +3,17 @@
 <h2>イベント編集</h2>
 <form action="." method="post">
   <div class="infobox">
-    <div>イベント名: <input type="text" value="{$app.eventInfo.0.event_name}"></div>
+    <div>イベント名: <input type="text" name="eventName" value="{$app.eventInfo.0.event_name}"></div>
     <div>
-      公開開始日: <input type="date" value="{$app.eventInfo.0.open_day}">
-      公開終了日:  <input type="date" value="{$app.eventInfo.0.end_day}">
+      公開開始日: <input type="date" name="openDay" value="{$app.eventInfo.0.open_day}">
+      公開終了日:  <input type="date" name="endDay" value="{$app.eventInfo.0.end_day}">
     </div>
     <div>
       認証キー: {$app.eventInfo.0.auth_key}
     </div>
     <div>
       <input type="submit" name="action_delete" value="削除">
+      <input type="submit" name="action_updateEvent" value="更新">
     </div>
     <div>
       写真の追加: <input type="file" name="addPhoto">

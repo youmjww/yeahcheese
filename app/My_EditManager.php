@@ -30,4 +30,19 @@ class My_EditManager
             $modelPhotos->delPhoto($photoId);
         }
     }
+
+    /**
+     *  イベント情報を更新する
+     *
+     *  @param  $openDay
+     *  @param  $endDay
+     *  @param  $eventId
+     *  @param  $eventName
+     *
+     *  @return void
+     */
+    public function updateEvent($openDay, $endDay, $eventId, $eventName)
+    {
+        (new My_ModelEvents($this->backend))->updateEvent($openDay, $endDay, $eventId, $eventName);
+    }
 }
