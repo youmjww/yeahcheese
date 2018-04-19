@@ -73,17 +73,16 @@ class My_Action_UpdateEvent extends My_LoginActionClass
 
     public function prepare()
     {
-        $userId = $this->session->get('userInfo')[id];
-        $eventId = $this->af->get('eventId');
-
         if ($this->af->validate() > 0) {
             return 'error';
         }
 
+        $eventId = $this->af->get('eventId');
         if (! is_numeric($eventId)) {
             return 'error404';
         }
 
+        $userId = $this->session->get('userInfo')[id];
         if (! (new My_EventManager($this->backend))->isEventOwnerCurrentUser($eventId, $userId)) {
             return 'error403';
         }
