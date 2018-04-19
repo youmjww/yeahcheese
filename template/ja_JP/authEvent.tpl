@@ -2,7 +2,7 @@
 {if count($errors)}
   <ul>
   {foreach from=$errors item=error}
-   <li>{$error}</li>
+    <li>{$error}</li>
   {/foreach}
   </ul>
 {/if}
