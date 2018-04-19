@@ -58,7 +58,7 @@ class My_Form_UpdateEvent extends My_ActionForm
 
         foreach ($this->form_vars[$photos] as $photo) {
             if ($photo['size'] > self::MAX_PHOTO_SIZE) {
-                $this->ae->add(null, '各画像サイズは5MB未満にしてください。');
+                $this->ae->add(null, '各画像サイズは5MB以下にしてください。');
             }
 
             if (exif_imagetype($photo['tmp_name']) !== IMAGETYPE_JPEG) {
