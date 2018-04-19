@@ -1,22 +1,7 @@
 <?php
-class My_EditManager
+class My_EditManager extends Ethna_AppManager
 {
-    private $backend;
-
     const IMAGE_PATH = './sherImage';
-
-    /**
-     *
-     * backendへ値を入れるためのコンストラクタ
-     *
-     * @access public
-     * @param  &$backend
-     *
-     */
-    public function __construct(&$backend)
-    {
-        $this->backend = $backend;
-    }
 
     /**
      *  指定された写真をDBとディレクトリから削除する
