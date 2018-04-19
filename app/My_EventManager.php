@@ -192,4 +192,16 @@ class My_EventManager
         }
         return false;
     }
+
+    /**
+     *  認証キーからイベントの写真を持ってくる
+     *
+     *  @param $authKey string
+     *
+     *  @return string
+     */
+    public function getEventNameForAuthKey(string $authKey): string
+    {
+        return (new My_ModelEvents($this->backend))->getEventForAuthKey($authKey)[0]['event_name'];
+    }
 }
