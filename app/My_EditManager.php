@@ -23,9 +23,9 @@ class My_EditManager extends Ethna_AppManager
      *
      *  @param  string $openDay
      *  @param  string $endDay
-     *  @param  int $eventId
+     *  @param  int    $eventId
      *  @param  string $eventName
-     *  @param  array $photos
+     *  @param  array  $photos
      *
      *  @return void
      */

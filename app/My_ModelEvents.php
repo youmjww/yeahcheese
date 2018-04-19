@@ -168,4 +168,22 @@ class My_ModelEvents
 
         return $this->db->getAll($sql, $eventId);
     }
+
+    /**
+     *  認証キーからイベント情報を引っ張ってくる
+     *
+     *  @param $authKey string
+     *
+     *  @return array
+     */
+    public function getEventForAuthKey(string $authKey): array
+    {
+        $sql = "
+            SELECT *
+              FROM events
+             WHERE auth_key = ?
+        ";
+
+        return $this->db->getRow($sql, $authKey);
+    }
 }

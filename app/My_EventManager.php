@@ -154,4 +154,56 @@ class My_EventManager
     {
         return (new My_ModelPhotos($this->backend))->getEventPhoto($eventId);
     }
+
+    /**
+     *  認証キーからイベントの写真を持ってくる
+     *
+     *  @param $authKey string
+     *
+     *  @return mixed string or null
+     */
+    public function getEventPhotosForAuthKey(string $authKey): ?array
+    {
+        $eventInfo = (new My_ModelEvents($this->backend))->getEventForAuthKey($authKey);
+        if (empty($eventInfo)) {
+            return null;
+        }
+
+        if (! $this->isDuringPublishingPeriod($eventInfo['open_day'], $eventInfo['end_day'])) {
+            return null;
+        }
+
+        return (new My_ModelPhotos($this->backend))->getEventPhoto($eventInfo['id']);
+    }
+
+    /**
+     *  今日がイベントの公開期間中かどうか
+     *
+     *  @param $openDay string
+     *  @param $endDay string
+     *
+     *  @return bool
+     */
+    private function isDuringPublishingPeriod(string $openDay, string $endDay): bool
+    {
+        $today = new DateTime();
+        $openDay = new DateTime($openDay);
+        $endDay= new DateTime($endDay);
+        if ($today > $openDay && $today < $endDay) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     *  認証キーからイベントの写真を持ってくる
+     *
+     *  @param $authKey string
+     *
+     *  @return string
+     */
+    public function getEventNameForAuthKey(string $authKey): string
+    {
+        return (new My_ModelEvents($this->backend))->getEventForAuthKey($authKey)['event_name'];
+    }
 }
