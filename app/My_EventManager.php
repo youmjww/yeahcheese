@@ -186,7 +186,9 @@ class My_EventManager
      */
     private function isDuringPublishingPeriod(string $openDay, string $endDay): bool
     {
-        $today = date('Y-m-d H:i:s');
+        $today = new DateTime();
+        $openDay = new DateTime($openDay);
+        $endDay= new DateTime($endDay);
         if ($today > $openDay && $today < $endDay) {
             return true;
         }
