@@ -33,6 +33,11 @@ class My_Action_AuthEventDo extends My_ActionClass
 
     public function perform(): string
     {
+        $photos = (new My_EventManager($this->backend))->getEventPhotosForAuthKey($this->af->get('authKey'));
+        if (is_null($photos)) {
+            $this->ae->add(null, '指定されたイベントは存在しません');
+            return 'authEvent';
+        }
         return 'authEvent';
     }
 }
