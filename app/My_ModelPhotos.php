@@ -42,7 +42,7 @@ class My_ModelPhotos
      *
      *  @return int
      */
-    public function getPhotoCount($eventId): int
+    public function getPhotoCount(int $eventId): int
     {
         $sql = "
             SELECT id
@@ -59,7 +59,7 @@ class My_ModelPhotos
      *
      *  @return string
      */
-    public function getPhotoName($photoId): string
+    public function getPhotoName(int $photoId): string
     {
         $sql = "
             SELECT name
@@ -76,7 +76,7 @@ class My_ModelPhotos
      *
      *  @return array
      */
-    public function getEventPhoto($eventId): array
+    public function getEventPhoto(int $eventId): array
     {
         $sql = "
             SELECT *

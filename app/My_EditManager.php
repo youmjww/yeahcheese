@@ -8,7 +8,7 @@ class My_EditManager extends Ethna_AppManager
      *
      *  @param photoNames array
      */
-    public function deletePhotos($photosId)
+    public function deletePhotos(array $photosId)
     {
         foreach ($photosId as $photoId) {
             $modelPhotos = new My_ModelPhotos($this->backend);
@@ -21,15 +21,15 @@ class My_EditManager extends Ethna_AppManager
     /**
      *  イベント情報を更新する
      *
-     *  @param  $openDay
-     *  @param  $endDay
-     *  @param  $eventId
-     *  @param  $eventName
-     *  @param  $photos
+     *  @param  string $openDay
+     *  @param  string $endDay
+     *  @param  int $eventId
+     *  @param  string $eventName
+     *  @param  array $photos
      *
      *  @return void
      */
-    public function updateEvent($openDay, $endDay, $eventId, $eventName, $photos)
+    public function updateEvent(string $openDay, string $endDay, int $eventId, string $eventName, array $photos)
     {
         (new My_ModelEvents($this->backend))->updateEvent($openDay, $endDay, $eventId, $eventName);
         if (is_uploaded_file($photos[0]['tmp_name'])) {

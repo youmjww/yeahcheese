@@ -50,7 +50,7 @@ class My_Form_UpdateEvent extends My_ActionForm
      *  @param  string $photos フォームの項目名
      *
      */
-    public function checkFile($photos)
+    public function checkFile(string $photos)
     {
         if (! is_uploaded_file($this->form_vars[$photos][0]['tmp_name'])) {
             return null;
