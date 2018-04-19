@@ -98,4 +98,60 @@ class My_EventManager
         }
         return $events;
     }
+
+    /**
+     *  イベント情報の日付をハイフン区切りでフォーマット
+     *
+     *  @param $events array
+     *
+     *  @return $events array
+     */
+    private function formatPublishDayOnHyphen(array $events): array
+    {
+        foreach ($events as $key => $event) {
+            $events[$key]['open_day'] = (new DateTime($event['open_day']))->format('Y-m-d');
+            $events[$key]['end_day'] = (new DateTime($event['end_day']))->format('Y-m-d');
+        }
+        return $events;
+    }
+
+    /**
+     *  現在のユーザのイベントかどうか調べる
+     *
+     *  @param  eventId int
+     *  @param  userId int
+     *
+     *  @return bool
+     */
+    public function isEventOwnerCurrentUser(int $eventId, int $userId): bool
+    {
+        if ((new My_ModelEvents($this->backend))->getEventOwner($eventId) === $userId) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     *  イベントを取ってくる
+     *
+     *  @param $eventId int
+     *
+     *  @return void
+     */
+    public function getEvent(int $eventId)
+    {
+        return $this->formatPublishDayOnHyphen((new My_ModelEvents($this->backend))->getEvent($eventId));
+    }
+
+    /**
+     *  イベントの写真を持ってくる
+     *
+     *  @param $eventId int
+     *
+     *  @return void
+     */
+    public function getEventPhotos(int $eventId)
+    {
+        return (new My_ModelPhotos($this->backend))->getEventPhoto($eventId);
+    }
 }

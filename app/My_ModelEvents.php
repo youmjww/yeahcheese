@@ -41,6 +41,29 @@ class My_ModelEvents
 
 
     /**
+     *  イベント情報を更新する
+     *
+     *  @param  $openDay
+     *  @param  $endDay
+     *  @param  $eventId
+     *  @param  $eventName
+     *
+     *  @return void
+     */
+    public function updateEvent($openDay, $endDay, $eventId, $eventName)
+    {
+        $sql = "
+            UPDATE events
+               SET (open_day, end_day, event_name) = (?,?,?)
+             WHERE id = ?
+        ";
+
+        $openDay = (new DateTime($openDay))->format('Y-m-d H:i:s');
+        $endDay = (new DateTime($endDay))->format('Y-m-d H:i:s');
+        $this->db->getAssoc($sql, [$openDay, $endDay, $eventName, $eventId]);
+    }
+
+    /**
      *  認証キーを作成する
      *
      *
@@ -108,5 +131,41 @@ class My_ModelEvents
         ";
 
         return $this->db->getAll($sql, $userId);
+    }
+
+    /**
+     *  イベントIDのオーナIDを取得
+     *
+     *  @param $EventId int
+     *
+     *  @return int or null
+     */
+    public function getEventOwner(int $eventId): ?int
+    {
+        $sql = "
+            SELECT user_id
+              FROM events
+             WHERE id = ?
+        ";
+
+        return $this->db->getOne($sql, $eventId);
+    }
+
+    /**
+     *  イベントIDからイベントを引っ張ってくる
+     *
+     *  @param $eventId int
+     *
+     *  @return array
+     */
+    public function getEvent(int $eventId): array
+    {
+        $sql = "
+            SELECT *
+              FROM events
+             WHERE id = ?
+        ";
+
+        return $this->db->getAll($sql, $eventId);
     }
 }
