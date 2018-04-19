@@ -169,11 +169,11 @@ class My_EventManager
             return null;
         }
 
-        if (! $this->isDuringPublishingPeriod($eventInfo[0]['open_day'], $eventInfo[0]['end_day'])) {
+        if (! $this->isDuringPublishingPeriod($eventInfo['open_day'], $eventInfo['end_day'])) {
             return null;
         }
 
-        return (new My_ModelPhotos($this->backend))->getEventPhoto($eventInfo[0]['id']);
+        return (new My_ModelPhotos($this->backend))->getEventPhoto($eventInfo['id']);
     }
 
     /**
@@ -204,6 +204,6 @@ class My_EventManager
      */
     public function getEventNameForAuthKey(string $authKey): string
     {
-        return (new My_ModelEvents($this->backend))->getEventForAuthKey($authKey)[0]['event_name'];
+        return (new My_ModelEvents($this->backend))->getEventForAuthKey($authKey)['event_name'];
     }
 }

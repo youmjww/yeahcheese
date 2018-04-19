@@ -184,6 +184,6 @@ class My_ModelEvents
              WHERE auth_key = ?
         ";
 
-        return $this->db->getAll($sql, $authKey);
+        return $this->db->getRow($sql, $authKey);
     }
 }
