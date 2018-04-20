@@ -1,5 +1,5 @@
 
-<h1>ユーザ登録</h1>
+<h2>ユーザ登録</h2>
 <form action="." method="post">
   {if count($errors)}
     <ul>

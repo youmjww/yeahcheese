@@ -1,4 +1,4 @@
-<h1>ログイン</h1>
+<h2>ログイン</h2>
 <form action="." method="post">
   {if count($errors)}
     <ul>

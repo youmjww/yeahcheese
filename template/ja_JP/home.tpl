@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/css/home.css">
 <div class="top">
-  <h1>ホーム</h1>
-  <h3>{$session.userInfo.mailaddress}</h3>
+  <h2>ホーム</h2>
+  <h4>{$session.userInfo.mailaddress}</h4>
 </div>
 <div>
   <ul>

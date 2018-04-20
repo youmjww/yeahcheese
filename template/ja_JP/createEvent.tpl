@@ -5,7 +5,7 @@
   crossorigin="anonymous"></script>
 <script type="text/javascript" src="/js/createEvent.js"></script>
 
-<h1>イベント作成</h1>
+<h2>イベント作成</h2>
 <form action="." method="post" enctype="multipart/form-data">
   <ul>
     <p id="sizeError"></p>
