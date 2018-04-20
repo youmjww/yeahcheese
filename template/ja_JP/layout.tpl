@@ -9,15 +9,20 @@
     <title>yeahcheese</title>
 
   </head>
-  <body>
+  <body class="#fffde7 yellow lighten-5">
     <div class="header">
-      {if $session}
-        {include file='afterLoginHeader.tpl'}
-      {else}
-        {include file='beforLoginHeader.tpl'}
-      {/if}
+      <nav class="#fff59d yellow darken-1">
+        <a href="/" class="brand-logo center">yeahcheese</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          {if $session}
+            {include file='afterLoginHeader.tpl'}
+          {else}
+            {include file='beforLoginHeader.tpl'}
+          {/if}
+        </ul>
+      </nav>
     </div>
-    <div>
+    <div class="center-align">
       {$content}
     </div>
   </body>
