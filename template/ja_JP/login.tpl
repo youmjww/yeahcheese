@@ -18,6 +18,6 @@
     </tr>
   </table>
   <p>
-    <input type="submit" name="action_login_do" value="登録">
+    <input type="submit" name="action_login_do" value="ログイン">
   </p>
 </form>
