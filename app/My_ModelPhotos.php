@@ -53,6 +53,24 @@ class My_ModelPhotos
     }
 
     /**
+     *  イベントごとの写真を一枚取得
+     *
+     *  @param id int
+     *
+     *  @return string
+     */
+    public function getEventThumbnail(int $eventId): ?string
+    {
+        $sql = "
+            SELECT name
+              FROM photos
+             WHERE event_id = ?
+          ORDER BY id
+        ";
+        return $this->db->getOne($sql, $eventId);
+    }
+
+    /**
      *  写真IDから写真名を取得
      *
      *  @param id int
