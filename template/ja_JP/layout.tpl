@@ -25,5 +25,6 @@
     <div class="center-align">
       {$content}
     </div>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
   </body>
 </html>
