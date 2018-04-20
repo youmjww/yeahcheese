@@ -50,6 +50,20 @@ class My_Form_Index extends My_ActionForm
 class My_Action_Index extends My_ActionClass
 {
     /**
+     *  authenticate before executing action.
+     *
+     *  @access public
+     *  @return string  Forward name.
+     *                  (null if no errors. false if we have something wrong.)
+     */
+    public function authenticate()
+    {
+        if ($this->session->isStart()) {
+            return 'home';
+        }
+    }
+
+    /**
      *  preprocess Index action.
      *
      *  @access    public
