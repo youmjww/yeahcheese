@@ -1,11 +1,13 @@
 <div class="col s12 m3">
   <div class="card">
     <div class="card-image">
-      {if $event.thumbnail}
-      <img src="sherImage/{$event.thumbnail}" width="150" height="200">
-      {else}
-      <img src="images/image-not-found.jpg" width="150" height="200">
-      {/if}
+      <a href="/?action_authEvent_do=true&authKey={$event.auth_key}">
+        {if $event.thumbnail}
+        <img src="sherImage/{$event.thumbnail}" width="150" height="200">
+        {else}
+        <img src="images/image-not-found.jpg" width="150" height="200">
+        {/if}
+      </a>
     </div>
     <div class="card-content">
       <span class="card-title"> {$event.event_name}</span>
