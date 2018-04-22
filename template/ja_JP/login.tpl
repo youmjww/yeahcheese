@@ -1,11 +1,11 @@
 <h2>ログイン</h2>
 <form action="." method="post">
   {if count($errors)}
-  <ul>
-    {foreach from=$errors item=error}
-    <li>{$error}</li>
-    {/foreach}
-  </ul>
+    <ul>
+      {foreach from=$errors item=error}
+      <li>{$error}</li>
+      {/foreach}
+    </ul>
   {/if}
   <div class=".input-field">
     <div class="row ">
