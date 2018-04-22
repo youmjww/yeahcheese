@@ -11,7 +11,7 @@
   </div>
   <div class="row">
     <div class="input-field col s12 m6 offset-m3">
-      <input id="eventName" type="text" name="eventName" value="{$form.eventName}" required>
+      <input id="eventName" type="text" name="eventName" value="{$app.eventInfo.0.event_name}" required>
       <label for="eventName">イベント名</label>
     </div>
   </div>
@@ -44,11 +44,15 @@
       <input class="waves-effect waves-light btn-large col s12 m6 offset-m3" type="submit" name="action_updateEvent" value="イベント情報を更新">
     </div>
   </div>
-  <div class="photos">
+  <div class="row">
     {foreach from=$app.eventPhoto item=photo}
-    <div class="photo">
-      <input type="checkbox" name="photos[]" value="{$photo.id}">
-      <img src="/sherImage/{$photo.name}" width="250" height="250">
+    <div class="col s12 m5 l4">
+      <label>
+        <input type="checkbox" class="red darken-2" name="photos[]" value="{$photo.id}" />
+        <span>
+          <img src="/sherImage/{$photo.name}" width="250" height="250">
+        </span>
+      </label>
     </div>
     {/foreach}
   </div>
@@ -59,4 +63,4 @@
     </div>
   </div>
 
-  {/form}
+{/form}
