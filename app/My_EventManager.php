@@ -64,21 +64,25 @@ class My_EventManager
      */
     public function getEventInfo(int $userId): array
     {
-        $events = (new My_ModelEvents($this->backend))->getUserEvents($userId);
-        return $this->formatPublishDay($this->setNumberOfPhoto($events));
+        $modelEvents = new My_ModelEvents($this->backend);
+        $events = $modelEvents->getUserEvents($userId);
+        return $this->formatPublishDay($this->setNumberOfPhotoAndThumbnail($events));
     }
 
     /**
-     *  イベント情報に写真の枚数を埋め込む
+     *  イベント情報に写真の枚数とサムネイルを埋め込む
      *
      *  @param $events array
      *
      *  @return $events array
      */
-    private function setNumberOfPhoto(array $events): array
+    private function setNumberOfPhotoAndThumbnail(array $events): array
     {
+        $modelPhotos = new My_ModelPhotos($this->backend);
         foreach ($events as $key => $event) {
-            $events[$key]['photo_count'] = (new My_ModelPhotos($this->backend))->getPhotoCount($event['id']);
+            $events[$key]['photo_count'] = $modelPhotos->getPhotoCount($event['id']);
+            $events[$key]['thumbnail'] = $modelPhotos->getEventThumbnail($event['id']);
+
         }
         return $events;
     }

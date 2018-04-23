@@ -1,6 +1,6 @@
-<h1>error!!!</h1>
+<h2>error!!!</h2>
 {if count($errors)}
-  <ul>
+  <ul class="error">
     {foreach from=$errors item=error}
       <li>{$error}</li>
     {/foreach}

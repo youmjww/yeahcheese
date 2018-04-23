@@ -1,5 +1,5 @@
 <?php
-class My_Action_AuthEvent extends My_LoginActionClass
+class My_Action_AuthEvent extends My_ActionClass
 {
     public function perform(): string
     {
