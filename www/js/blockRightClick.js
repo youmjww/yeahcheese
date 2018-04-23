@@ -1,4 +1,3 @@
-// onMouseDown="return false;" onSelectStart="return false"
 $(document).ready(function(){
   var img = $('img');
   img.on('contextmenu', function(){
