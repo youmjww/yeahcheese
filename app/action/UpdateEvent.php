@@ -70,7 +70,7 @@ class My_Form_UpdateEvent extends My_ActionForm
     }
 
     /**
-     *  イベントの日付が公開開始日より公開終了日が前になっていないかチェック
+     *  公開開始日より公開終了日が前になっていないかチェック
      *
      *  @access private
      *  @param  string $openDay フォームの項目名
