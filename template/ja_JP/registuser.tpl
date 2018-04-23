@@ -2,7 +2,7 @@
 <h2>ユーザ登録</h2>
 <form action="." method="post">
   {if count($errors)}
-  <ul>
+  <ul class="error">
     {foreach from=$errors item=error}
     <li>{$error}</li>
     {/foreach}

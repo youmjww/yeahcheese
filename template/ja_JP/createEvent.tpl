@@ -11,7 +11,7 @@
     <p id="sizeError"></p>
   </ul>
   {if count($errors)}
-  <ul>
+  <ul class="error">
     {foreach from=$errors item=error}
     <li>{$error}</li>
     {/foreach}

@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <link rel="stylesheet" href="/css/materialize.min.css" type="text/css" media="screen,projection"/>
+    <link rel="stylesheet" href="/css/error.css" type="text/css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>yeahcheese</title>
   </head>
