@@ -20,6 +20,8 @@ class My_Form_UpdateEvent extends My_ActionForm
         'endDay' => [
             'type'     => VAR_TYPE_STRING,
             'name'     => '公開終了日',
+            'custom'     => 'isAfterStartDay',
+
             'required' => true
         ],
 
@@ -64,6 +66,20 @@ class My_Form_UpdateEvent extends My_ActionForm
             if (exif_imagetype($photo['tmp_name']) !== IMAGETYPE_JPEG) {
                 $this->ae->add(null, 'アップロードできるファイルはjpegのみです。');
             }
+        }
+    }
+
+    /**
+     *  公開開始日より公開終了日が前になっていないかチェック
+     *
+     *  @access private
+     *  @param  string $openDay フォームの項目名
+     *
+     */
+    public function isAfterStartDay()
+    {
+        if (new DateTime($this->form_vars['openDay']) > new DateTime($this->form_vars['endDay'])) {
+            $this->ae->add(null, 'イベントの公開期間は公開開始日よりも公開終了日が後に来るようにしてください。');
         }
     }
 }

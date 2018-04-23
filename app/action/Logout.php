@@ -18,6 +18,6 @@ class My_Action_Logout extends My_LoginActionClass
     public function perform(): string
     {
         $this->session->destroy();
-        return 'login';
+        return 'index';
     }
 }

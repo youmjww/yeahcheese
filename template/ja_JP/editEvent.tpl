@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="css/editEvent.css">
 
 <h2>イベント編集</h2>
 {form ethna_action="editEvent" enctype="file" name="editEvent"}
