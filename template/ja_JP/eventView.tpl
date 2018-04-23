@@ -1,14 +1,10 @@
-<link rel="stylesheet" type="text/css" href="css/editEvent.css">
-
-
-
 <h2>イベント閲覧</h2>
-<div class="infobox">
+<div class="row">
   <div>イベント名: {$app.eventName}</div>
 </div>
-<div class="photos">
+<div class="row">
   {foreach from=$app.eventPhoto item=photo}
-  <div class="photo">
+  <div class="col s12 m5 l3">
     <img src="/sherImage/{$photo.name}" width="250" height="250" class="materialboxed">
   </div>
   {/foreach}
